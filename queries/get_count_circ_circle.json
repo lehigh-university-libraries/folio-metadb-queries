@@ -5,7 +5,8 @@
     "parameters": [
         {
             "name": "param_loans_items",
-            "displayName": "User group",
+            "displayName": "Start date",
+             "displayName": "End date",
             "type": "text",
             "required": false
         }
