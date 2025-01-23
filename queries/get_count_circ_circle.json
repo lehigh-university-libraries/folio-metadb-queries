@@ -5,7 +5,7 @@
     "parameters": [
         {
             "name": "param_loans_items",
-            "displayName": "Start date", "End date"
+            "displayName": "Start date", "End date",
             "type": "text",
             "required": false
         }
