@@ -7,7 +7,7 @@ The report shows the circulation of books in the CIRCLE collection.
 
 |Parameter|Position|Type|Default value|Sample input|
 |---|---|---|---|---|
-|param_user_group|1|TEXT|''|Start date, e.g. staff|
+|param_user_group|1|TEXT|''|Start date and end date, e.g. 2024-01-01 to 2025-01-01|
 
 ## Output table
 
