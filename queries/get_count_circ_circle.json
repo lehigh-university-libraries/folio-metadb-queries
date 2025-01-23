@@ -1,7 +1,7 @@
 {
     "displayName": "List the counts of users in user groups",
-    "description": "Create counts by user groups",
-    "instructions": "You can choose a user group or leave it empty",
+    "description": "Create circ counts of CIRCLE collection by loans.",
+    "instructions": "You input a start date and/or and end date or leave it empty",
     "parameters": [
         {
             "name": "param_user_group",
