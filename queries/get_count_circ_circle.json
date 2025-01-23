@@ -1,5 +1,5 @@
 {
-    "displayName": "List the counts of users in user groups",
+    "displayName": "List the circulation of CIRCLE collection by loan date",
     "description": "Create circ counts of CIRCLE collection by loans.",
     "instructions": "You input a start date and/or and end date or leave it empty",
     "parameters": [
