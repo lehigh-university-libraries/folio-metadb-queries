@@ -13,7 +13,11 @@ The report shows the circulation of books in the CIRCLE collection.
 
 | Attribute | Type | Description | Sample output |
 | --- | --- | --- | --- |
-| barcode | TEXT | The barcode assigned to the book | 39151010192645 |
-| publication_date | TEXT | The of publication | date |
+| barcode | INTEGER | The barcode assigned to the book | 39151010192645 |
+| contributor | TEXT | Author name if available | Baldwin, James, 1924-1987 |
+| title | TEXT | Book title | The price of the ticket : collected nonfiction: 1948-1985 / James Baldwin. |
+| publication_date | TEXT | The date of publication | 1985 |
+| item_status | TEXT | The status of the item | Available |
+| folio_circ_count | INTEGER | The number of times book was loaned | 2 |
 | patron_group | TEXT | The name of the patron group(s) | staff, faculty |
-| instance_hrid | INTEGER | FOLIO instance hrid | 1234567 |
+| instance_hrid | INTEGER | FOLIO instance hrid | 00011881114 |
