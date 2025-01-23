@@ -4,7 +4,7 @@
     "instructions": "You input a start date and/or and end date or leave it empty",
     "parameters": [
         {
-            "name": "param_user_group",
+            "name": "param_loans_items",
             "displayName": "User group",
             "type": "text",
             "required": false
