@@ -1,7 +1,7 @@
 {
     "displayName": "List titles and their circulation count of CIRCLE collection",
-    "description": "Create circ counts of CIRCLE collection by loan date",
-    "instructions": "You input a start date and/or an end date or leave it empty",
+    "description": "Create list of all CIRCLE books and the number of times they have been loaned within a given period of time.",
+    "instructions": "Input a start date of the period of time and/or an end date or leave it empty",
     "parameters": [
         {
             "name": "start_date",
