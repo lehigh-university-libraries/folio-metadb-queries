@@ -1,7 +1,7 @@
 # List to count circulation of CIRCLE collection
 
 ## Purpose
-The report shows the circulation of books in the CIRCLE collection.
+The report shows the circulation of books in the CIRCLE collection. A "circulation" is counted in FOLIO when a book is checked out (???? - check with Mark). In house uses counted? (???? - check with Mark).
 
 ## Parameters
 
