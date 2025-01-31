@@ -5,12 +5,12 @@ CREATE FUNCTION get_count_circ_circle(
     end_date DATE DEFAULT NULL
 ) 
 RETURNS TABLE (
-    barcode INTEGER,
+    barcode TEXT,
     author TEXT,
     title TEXT,
     loan_count INTEGER
 ) 
-LANGUAGE SQL AS 
+AS 
 $$
 WITH loan_counts AS (
     SELECT item_id, COUNT(*) AS loan_count 

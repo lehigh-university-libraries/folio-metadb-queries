@@ -13,7 +13,7 @@ The report shows the circulation of books in the CIRCLE collection. A "circulati
 
 | Attribute | Type | Description | Sample output |
 | --- | --- | --- | --- |
-| barcode | INTEGER | The barcode assigned to the book | 39151010192645 |
+| barcode | TEXT | The barcode assigned to the book | 39151010192645 |
 | contributor | TEXT | Author name if available | Baldwin, James, 1924-1987 |
 | title | TEXT | Book title | The price of the ticket : collected nonfiction: 1948-1985 / James Baldwin. |
 | publication_date | TEXT | The date of publication | 1985 |
