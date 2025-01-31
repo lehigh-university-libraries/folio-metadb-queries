@@ -23,10 +23,10 @@ WITH loan_counts AS (
     GROUP BY item_id
 )
 SELECT 
-    it.barcode AS barcode,
-    string_agg(DISTINCT ic.contributor_name, ', ') AS author,
-    it2.title AS title,
-    COALESCE(lc.loan_count, 0) AS loan_count  -- Use pre-aggregated count
+    it.barcode :: TEXT AS barcode,
+    string_agg(DISTINCT ic.contributor_name, ', ') :: TEXT AS author,
+    it2.title :: TEXT AS title,
+    COALESCE(lc.loan_count, 0) :: INTEGER AS loan_count  -- Use pre-aggregated count
 FROM folio_inventory.item__t it 
 LEFT JOIN loan_counts lc 
     ON lc.item_id = it.id 
