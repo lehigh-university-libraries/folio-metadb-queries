@@ -1,3 +1,5 @@
+--metadb:function get_count_circ_circle
+
 DROP FUNCTION IF EXISTS get_count_circ_circle;
 
 CREATE FUNCTION get_count_circ_circle(
