@@ -35,12 +35,8 @@ SELECT
 FROM folio_derived.loans_items li
 JOIN folio_derived.item_ext ie 
     on li.item_id = ie.item_id
-JOIN folio_derived.item_ext ie 
-    on li.item_id = ie.item_id
 JOIN folio_derived.items_holdings_instances ihi 
     on li.item_id = ihi.item_id
-JOIN folio_derived.item_ext ie 
-    on li.item_id = ie.item_id
 JOIN folio_derived.users_groups ug2 
     on li.user_id = ug2.user_id
 WHERE li.loan_status = 'Open' 
