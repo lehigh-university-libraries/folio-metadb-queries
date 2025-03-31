@@ -1,6 +1,6 @@
 {
     "displayName": "List expired users with outstanding loans",
-    "description": "Because they took our stuff!",
+    "description": "This report lists patrons with outstanding loans and an Expiration date on their record.",
     "instructions": "No inputs needed.",
     "parameters": [
     ]
