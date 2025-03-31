@@ -6,16 +6,15 @@ RETURNS TABLE
 (
     bill_amount INT,
     bill_remaining INT,
-    bill_type VARCHAR(50),
+    bill_type TXT,
     item_barcode INT,
-    item_call_number VARCHAR(50),
-    item_title VARCHAR(255),
+    item_call_number TXT,
+    item_title TXT,
     item_due_date DATE,
-    item_location VARCHAR(100),
+    item_location TXT,
     user_barcode INT,
-    username VARCHAR(50),
-    user_last_name VARCHAR(50)
-    
+    username TXT,
+    user_last_name TXT  
 ) 
 AS
 $$
