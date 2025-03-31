@@ -10,7 +10,7 @@ This report shows a list of expired users who still have outstanding loans.  We 
 | Attribute | Type | Description | Sample output |
 | --- | --- | --- | --- |
 
-| call_number | | Effective call number of the item | 818.5 Z77p|
+| call_number | TEXT | Effective call number of the item | 818.5 Z77p|
 | expire_date | DATE | Date the patron is expired | 2025-06-28T00:00:00|
 | item_barcode | TEXT | The barcode assigned to the item | 39151010192645 |
 | last_name | TEXT | Patron last name | Canney|
