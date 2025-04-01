@@ -43,6 +43,6 @@ JOIN folio_derived.users_groups ug2
 WHERE li.loan_status = 'Open' 
     and ug2.expiration_date is not null 
     and ie.discovery_suppress = 'False'
-ORDER BY effective_call_number desc;
+ORDER BY expire_date desc;
 $$
 LANGUAGE SQL;
