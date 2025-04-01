@@ -12,7 +12,7 @@ RETURNS TABLE
     item_title TEXT,
     item_due_date DATE,
     item_location TEXT,
-    user_barcode INTEGER,
+    user_barcode TEXT,
     username TEXT,
     user_last_name TEXT  
 ) 
