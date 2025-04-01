@@ -6,25 +6,25 @@ RETURNS TABLE
 (
     bill_amount INTEGER,
     bill_type TEXT,
-    item_barcode TEXT,
-    item_call_number TEXT,
-    item_title TEXT,
-    item_due_date DATE,
     user_barcode TEXT,
     username TEXT,
-    user_last_name TEXT  
+    user_last_name TEXT,
+    item_due_date DATE,
+    item_barcode TEXT,
+    item_call_number TEXT,
+    item_title TEXT
 ) 
 AS
 $$
 SELECT at2.amount as bill_amount,
-at2.fee_fine_type as bill_type, 
-at2.barcode as item_barcode,
-at2.call_number as item_call_number,
-at2.title as item_title,
-cast (at2.due_date as DATE) as item_due_date,
+at2.fee_fine_type as bill_type,
 ug2.barcode as user_barcode,
 ug2.username AS username,
-ug2.user_last_name AS user_last_name
+ug2.user_last_name AS user_last_name,
+cast (at2.due_date as DATE) as item_due_date,
+at2.barcode as item_barcode,
+at2.call_number as item_call_number,
+at2.title as item_title
 from folio_feesfines.accounts__t__ at2 
 inner join folio_derived.users_groups ug2 on at2.user_id = ug2.user_id
 where at2.remaining >= '1' 
