@@ -4,15 +4,15 @@ CREATE FUNCTION get_outstanding_bills_with_user()
 
 RETURNS TABLE
 (
-    bill_amount INT,
-    bill_remaining INT,
+    bill_amount INTEGER,
+    bill_remaining INTEGER,
     bill_type TEXT,
     item_barcode TEXT,
     item_call_number TEXT,
     item_title TEXT,
     item_due_date DATE,
     item_location TEXT,
-    user_barcode INT,
+    user_barcode INTEGER,
     username TEXT,
     user_last_name TEXT  
 ) 
