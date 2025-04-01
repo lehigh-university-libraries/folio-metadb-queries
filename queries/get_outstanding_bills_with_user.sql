@@ -7,7 +7,7 @@ RETURNS TABLE
     bill_amount INT,
     bill_remaining INT,
     bill_type TEXT,
-    item_barcode INT,
+    item_barcode TEXT,
     item_call_number TEXT,
     item_title TEXT,
     item_due_date DATE,
