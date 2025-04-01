@@ -11,6 +11,8 @@ This report shows a list of expired users who still have outstanding loans.  We 
 | --- | --- | --- | --- |
 | expire_date| DATE| Date the patron is expired | 2025-06-28T00:00:00 |
 | last_name | TEXT| Patron last name | Tester|
+| user_barcode | TEXT | Patron barcode | 800000000 |
+| username | TEXT | Patron username | amx000 |
 | patron_group_name | TEXT | The name of the patron group(s) | faculty |
 | loan_due_date |DATE| Date the loan was due| 2025-06-28T00:00:00 |
 | item_barcode| TEXT| The barcode assigned to the item | 39151010192645 |
