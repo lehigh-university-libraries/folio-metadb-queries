@@ -5,13 +5,11 @@ CREATE FUNCTION get_outstanding_bills_with_user()
 RETURNS TABLE
 (
     bill_amount INTEGER,
-    bill_remaining INTEGER,
     bill_type TEXT,
     item_barcode TEXT,
     item_call_number TEXT,
     item_title TEXT,
     item_due_date DATE,
-    item_location TEXT,
     user_barcode TEXT,
     username TEXT,
     user_last_name TEXT  
@@ -19,13 +17,11 @@ RETURNS TABLE
 AS
 $$
 SELECT at2.amount as bill_amount,
-at2.remaining as bill_remaining,
 at2.fee_fine_type as bill_type, 
 at2.barcode as item_barcode,
 at2.call_number as item_call_number,
 at2.title as item_title,
 cast (at2.due_date as DATE) as item_due_date,
-at2.location as item_location,
 ug2.barcode as user_barcode,
 ug2.username AS username,
 ug2.user_last_name AS user_last_name
