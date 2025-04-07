@@ -21,7 +21,7 @@ $$
 select cast (fug.updated_date as DATE) as graduating_note_date, 
 fug.barcode as patron_barcode, 
 fug.user_last_name as patron_last_name, 
-LEFT(fug.user_email, 6) AS patron_email,
+fug.user_email AS patron_email,
 fug.group_name as patron_group,
 ie.barcode as item_barcode, 
 ie.effective_call_number as item_call_number, 
