@@ -1,6 +1,6 @@
 {
     "displayName": "List items with circulation counts and patron groups",
-    "description": "This report lists items with circulation counts and patron groups.",
+    "description": "This report lists items with circulation counts for the last five years with patron group information (excluding ILL circulation).",
     "instructions": "No inputs needed.",
     "parameters": [
     ]
