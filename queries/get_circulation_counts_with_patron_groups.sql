@@ -1,5 +1,5 @@
 --metadb:function get_circulation_counts_with_patron_group
--- This function retrieves all items with circulation counts in a time period with patron group information (excluding ILL circulation).
+-- This function retrieves all items with circulation counts in the last five years with patron group information (excluding ILL circulation).
 CREATE FUNCTION get_circulation_counts_with_patron_group()
 
 RETURNS TABLE
