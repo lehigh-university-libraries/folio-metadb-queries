@@ -1,0 +1,7 @@
+{
+    "displayName": "List items with circulation counts and patron groups",
+    "description": "This report lists items with circulation counts and patron groups.",
+    "instructions": "No inputs needed.",
+    "parameters": [
+    ]
+}
