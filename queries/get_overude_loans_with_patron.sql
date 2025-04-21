@@ -1,12 +1,18 @@
 --metadb:function get_overdue_loans_with_patron
-DROP FUNCTION IF EXISTS get_overdue_loans_with_patron;
 CREATE FUNCTION get_overdue_loans_with_patron ()
     
-    RETURNS TABLE (
-        due_date date,
-        item_effective_call_number text item_title text item_tstatus text location_effective text patron_group_name text patron_last_name text,
-        patron_barcode text,
-        patron_email text,
+RETURNS TABLE 
+    (
+        due_date DATE,
+        item_barcode TEXT
+        item_effective_call_number TEXT
+        item_title TEXT
+        item_tstatus TEXT
+        location_effective TEXT 
+        patron_group_name TEXT 
+        patron_last_name TEXT,
+        patron_barcode TEXT,
+        patron_email TEXT,
     )
     AS 
     $$
