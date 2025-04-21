@@ -23,7 +23,7 @@ RETURNS TABLE
         ihi.title AS item_title,
         li.item_status AS item_tstatus,
         ie.effective_location_name AS location_effective,
-        li.patron_group_name,
+        li.patron_group_name AS patron_group_name,
         ug.user_last_name AS patron_last_name,
         ug.barcode AS patron_barcode,
         ug.user_email AS patron_email
