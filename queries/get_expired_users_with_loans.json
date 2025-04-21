@@ -1,5 +1,5 @@
 {
-    "displayName": "Expired users with outstanding loans",
+    "displayName": "CIRCULATION - Expired users with outstanding loans",
     "description": "This report lists patrons with outstanding loans and an Expiration date on their record.",
     "instructions": "No inputs needed.",
     "parameters": [
