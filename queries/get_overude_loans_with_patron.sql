@@ -1,23 +1,23 @@
 --metadb:function get_overdue_loans_with_patron
-CREATE FUNCTION get_overdue_loans_with_patron ()
+CREATE FUNCTION get_overdue_loans_with_patron()
     
-RETURNS TABLE 
+    RETURNS TABLE 
     (
         due_date DATE,
-        item_barcode TEXT
-        item_effective_call_number TEXT
-        item_title TEXT
-        item_tstatus TEXT
-        location_effective TEXT 
-        patron_group_name TEXT 
+        item_barcode TEXT,
+        item_effective_call_number TEXT,
+        item_title TEXT,
+        item_tstatus TEXT,
+        location_effective TEXT, 
+        patron_group_name TEXT, 
         patron_last_name TEXT,
         patron_barcode TEXT,
-        patron_email TEXT,
+        patron_email TEXT
     )
     AS 
     $$
     SELECT
-        CAST(li.loan_due_date AS date) AS due_date,
+        CAST(li.loan_due_date AS DATE) AS due_date,
         ihi.barcode AS item_barcode,
         ie.effective_call_number AS item_effective_call_number,
         ihi.title AS item_title,
