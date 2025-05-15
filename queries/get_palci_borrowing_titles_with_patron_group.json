@@ -1,0 +1,7 @@
+{
+    "displayName": "ILL - List PALCI titles borrowed and patron groups",
+    "description": "This report lists titles borrowed from PALCI during the past 3 years with patron group information.",
+    "instructions": "No inputs needed.",
+    "parameters": [
+    ]
+}
