@@ -1,7 +1,6 @@
 --metadb:function get_palci_borrowing_with_bibdata_andpatron_group
 -- This function retrieves three years of PALCI titles borrowed with bibligraphic data and patron group information.
 CREATE FUNCTION get_palci_borrowing_with_bibdata_andpatron_group()
-
 RETURNS TABLE
 (
     item_barcode TEXT,
@@ -17,15 +16,15 @@ RETURNS TABLE
 AS
 $$
 SELECT 
-ie.barcode AS item_barcode,
+    ie.barcode AS item_barcode,
     MAX(ie.effective_call_number) AS item_call_number,
     MAX(CASE 
         WHEN ic.contributor_is_primary = 'TRUE' THEN ic.contributor_name
-        ELSE ''
+        ELSE NULL
     END) AS contributor_name,
     MAX(ihi.title) AS item_title,
     MAX(ip.publisher) AS item_publisher,
-    MAX(ip.date_of_publication) AS date_of_publication,
+    MAX(ip.date_of_publication::DATE) AS date_of_publication,
     g.group AS patron_group,    
     COUNT(lt.id) AS loan_count,
     COALESCE(SUM(lt.renewal_count), 0) AS renewal_count
