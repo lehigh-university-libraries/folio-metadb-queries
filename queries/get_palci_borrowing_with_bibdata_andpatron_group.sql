@@ -8,7 +8,7 @@ RETURNS TABLE
     contributor_name TEXT,
     item_title TEXT,
     item_publisher TEXT,
-    date_of_publication DATE,
+    date_of_publication TEXT,
     patron_group TEXT,
     loan_count INTEGER,
     renewal_count INTEGER
