@@ -24,7 +24,13 @@ SELECT
     END) AS contributor_name,
     MAX(ihi.title) AS item_title,
     MAX(ip.publisher) AS item_publisher,
-    MAX(ip.date_of_publication::DATE) AS date_of_publication,
+    MAX(
+  CASE 
+    WHEN ip.date_of_publication ~ '^\d{4}$' 
+    THEN TO_DATE(ip.date_of_publication, 'YYYY') 
+    ELSE NULL 
+  END
+) AS date_of_publication,
     g.group AS patron_group,    
     COUNT(lt.id) AS loan_count,
     COALESCE(SUM(lt.renewal_count), 0) AS renewal_count
