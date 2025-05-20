@@ -8,7 +8,7 @@ RETURNS TABLE
     contributor_name TEXT,
     item_title TEXT,
     item_publisher TEXT,
-    date_of_publication TEXT,
+    date_of_publication INTEGER,
     patron_group TEXT,
     loan_count INTEGER,
     renewal_count INTEGER
@@ -25,12 +25,12 @@ SELECT
     MAX(ihi.title) AS item_title,
     MAX(ip.publisher) AS item_publisher,
     MAX(
-  CASE 
-    WHEN ip.date_of_publication ~ '^\d{4}$' 
-    THEN TO_DATE(ip.date_of_publication, 'YYYY') 
-    ELSE NULL 
-  END
-) AS date_of_publication,
+        CASE 
+            WHEN ip.date_of_publication ~ '\d{4}' 
+            THEN SUBSTRING(ip.date_of_publication FROM '\d{4}')::INTEGER
+            ELSE NULL
+        END
+    ) AS date_of_publication,
     g.group AS patron_group,    
     COUNT(lt.id) AS loan_count,
     COALESCE(SUM(lt.renewal_count), 0) AS renewal_count
@@ -54,3 +54,4 @@ GROUP BY ie.barcode, g.group
 ORDER BY MAX(ie.effective_call_number), g.group;
 $$
 LANGUAGE SQL STABLE;
+
