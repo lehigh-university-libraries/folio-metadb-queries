@@ -1,0 +1,7 @@
+{
+    "displayName": "INVENTORY - Spine Label report",
+    "description": "This report lists items with item condition note for spine label",
+    "instructions": "No inputs needed.",
+    "parameters": [
+    ]
+}
