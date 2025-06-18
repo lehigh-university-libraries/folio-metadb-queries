@@ -1,0 +1,19 @@
+{
+    "displayName": "List Service Points with Monthly Circulation Counts",
+    "description": "List Service Points with Monthly Circulation Counts",
+    "instructions": "Input beginning month and end month (in format 2025-01-01) or leave the date fields empty",
+    "parameters": [
+        {
+            "name": "start_date",
+            "displayName": "Start Date",
+            "type": "date",
+            "required": false
+        },
+        {
+            "name": "end_date",
+            "displayName": "End Date",
+            "type": "date",
+            "required": false
+        }
+    ]
+}
