@@ -6,7 +6,7 @@ CREATE FUNCTION get_circulation_counts_with_service_points(
     end_date DATE DEFAULT NULL
 ) 
 RETURNS TABLE (
-    month_start DATE,
+    month_start TEXT,
     service_point_name TEXT,
     action_type TEXT,
     ct INTEGER
@@ -36,7 +36,6 @@ simple_return_dates AS (
         'Checkin'::varchar AS action_type,
         loan_id
     FROM folio_derived.loans_items
-    WHERE checkin_service_point_name != 'Digital Media Studio'
 ),
 checkin_actions AS (
     SELECT 
@@ -51,7 +50,7 @@ checkin_actions AS (
     GROUP BY service_point_name, month_start, action_type
 )
 SELECT 
-    month_start,
+    to_char(month_start, 'YYYY-MM-DD') as month_start,
     service_point_name,
     action_type,
     ct
