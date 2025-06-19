@@ -23,7 +23,6 @@ WITH checkout_actions AS (
     WHERE 
         (start_date IS NULL OR loan_date >= start_date)
         AND (end_date IS NULL OR loan_date < end_date)
-        AND checkout_service_point_name != 'Digital Media Studio'
     GROUP BY service_point_name, month_start
 ),
 simple_return_dates AS (
