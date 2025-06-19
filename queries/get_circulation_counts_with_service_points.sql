@@ -6,10 +6,10 @@ CREATE FUNCTION get_circulation_counts_with_service_points(
 ) 
 RETURNS TABLE (
     month_start TEXT,
-    service_point_name TEXT
+    service_point_name TEXT,
     action_type TEXT,
     ct INTEGER
-    ) 
+) 
 AS 
 $$
 WITH checkout_actions AS (
@@ -50,17 +50,17 @@ checkin_actions AS (
     GROUP BY service_point_name, month_start, action_type
 )
 SELECT 
-    action_type,
-    ct,
     to_char(month_start, 'MM/YYYY') as month_start,
-    service_point_name
+    service_point_name,
+    action_type,
+    ct
 FROM checkout_actions
 UNION ALL
 SELECT 
-    action_type,
-    ct,
     to_char(month_start, 'MM/YYYY') as month_start,
-    service_point_name
+    service_point_name,
+    action_type,
+    ct
 FROM checkin_actions
 ORDER BY month_start, service_point_name, action_type;
 $$
