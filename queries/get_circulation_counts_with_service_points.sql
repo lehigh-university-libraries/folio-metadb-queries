@@ -6,10 +6,10 @@ CREATE FUNCTION get_circulation_counts_with_service_points(
 ) 
 RETURNS TABLE (
     month_start TEXT,
-    action_type TEXT,
-    ct INTEGER,
     service_point_name TEXT
-) 
+    action_type TEXT,
+    ct INTEGER
+    ) 
 AS 
 $$
 WITH checkout_actions AS (
