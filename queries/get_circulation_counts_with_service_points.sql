@@ -5,8 +5,8 @@ CREATE FUNCTION get_circulation_counts_with_service_points(
     end_date DATE DEFAULT NULL
 ) 
 RETURNS TABLE (
+    month_start TEXT,
     service_point_name TEXT,
-    month_start DATE,
     action_type TEXT,
     ct INTEGER
 ) 
@@ -22,7 +22,6 @@ WITH checkout_actions AS (
     WHERE 
         (start_date IS NULL OR loan_date >= start_date)
         AND (end_date IS NULL OR loan_date < end_date)
-        AND checkout_service_point_name != 'Digital Media Studio'
     GROUP BY service_point_name, month_start
 ),
 simple_return_dates AS (
@@ -51,17 +50,17 @@ checkin_actions AS (
 )
 SELECT 
     service_point_name,
-    month_start,
+    to_char(month_start, 'MM/YYYY') as month_start,
     action_type,
     ct
 FROM checkout_actions
 UNION ALL
 SELECT 
     service_point_name,
-    month_start,
+    to_char(month_start, 'MM/YYYY') as month_start,
     action_type,
     ct
 FROM checkin_actions
-ORDER BY service_point_name, month_start, action_type;
+ORDER BY month_start, service_point_name, action_type;
 $$
 LANGUAGE SQL;
