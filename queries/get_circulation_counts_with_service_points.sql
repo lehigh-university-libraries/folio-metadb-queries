@@ -1,4 +1,6 @@
+--metadb:function get_circulation_counts_with_service_points
 DROP FUNCTION IF EXISTS get_circulation_counts_with_service_points;
+
 CREATE FUNCTION get_circulation_counts_with_service_points(
     start_date DATE DEFAULT NULL,
     end_date DATE DEFAULT NULL
