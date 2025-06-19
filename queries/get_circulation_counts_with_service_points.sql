@@ -36,6 +36,7 @@ simple_return_dates AS (
         'Checkin'::varchar AS action_type,
         loan_id
     FROM folio_derived.loans_items
+    WHERE checkin_service_point_name != 'Digital Media Studio'
 ),
 checkin_actions AS (
     SELECT 
