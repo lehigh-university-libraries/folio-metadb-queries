@@ -1,5 +1,5 @@
 {
-    "displayName": "List Service Points with Monthly Circulation Counts",
+    "displayName": "Service Points with Monthly Circulation Counts",
     "description": "List Service Points with Monthly Circulation Counts",
     "instructions": "Input beginning month and end month (in format 2025-01-01) or leave the date fields empty",
     "parameters": [
