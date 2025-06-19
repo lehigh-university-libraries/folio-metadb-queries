@@ -54,15 +54,12 @@ SELECT
     service_point_name,
     action_type,
     ct
-FROM checkout_actions
-UNION ALL
-SELECT 
-    to_char(month_start, 'MM/YYYY') as month_start,
-    service_point_name,
-    action_type,
-    ct
-FROM checkin_actions
-ORDER BY month_start, service_point_name, action_type;
+FROM (
+    SELECT month_start, service_point_name, action_type, ct FROM checkout_actions
+    UNION ALL
+    SELECT month_start, service_point_name, action_type, ct FROM checkin_actions
+) combined
+ORDER BY combined.month_start, combined.service_point_name, combined.action_type;
 $$
 LANGUAGE SQL;
 
