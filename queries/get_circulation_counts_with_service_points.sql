@@ -1,65 +1,78 @@
---metadb:function get_circulation_counts_with_service_points
+-- metadb:function get_circulation_counts_with_service_points
 DROP FUNCTION IF EXISTS get_circulation_counts_with_service_points;
+
 CREATE FUNCTION get_circulation_counts_with_service_points(
     start_date DATE DEFAULT NULL,
-    end_date DATE DEFAULT NULL
-) 
-RETURNS TABLE (
-    month_start DATE,
-    service_point_name TEXT,
-    action_type TEXT,
-    ct INTEGER
-) 
-AS 
-$$
-WITH checkout_actions AS (
-    SELECT 
-        checkout_service_point_name AS service_point_name,
-        date_trunc('month', loan_date::date)::date AS month_start,
-        'Checkout'::varchar AS action_type,
-        count(loan_id) AS ct
-    FROM folio_derived.loans_items
-    WHERE 
-        (start_date IS NULL OR loan_date >= start_date)
-        AND (end_date IS NULL OR loan_date < end_date)
-        AND checkout_service_point_name != 'Digital Media Studio'
-    GROUP BY service_point_name, month_start
-),
-simple_return_dates AS (
-    SELECT 
-        checkin_service_point_name AS service_point_name,
-        coalesce(
-            system_return_date::timestamptz at time zone 'UTC',
-            loan_return_date::timestamptz at time zone 'UTC'
-        ) AS action_date,
-        'Checkin'::varchar AS action_type,
-        loan_id
-    FROM folio_derived.loans_items
-    WHERE checkin_service_point_name != 'Digital Media Studio'
-),
-checkin_actions AS (
-    SELECT 
-        service_point_name,
-        date_trunc('month', action_date::date)::date AS month_start,
-        action_type,
-        count(loan_id) AS ct
-    FROM simple_return_dates
-    WHERE 
-        (start_date IS NULL OR action_date >= start_date)
-        AND (end_date IS NULL OR action_date < end_date)
-    GROUP BY service_point_name, month_start, action_type
+    end_date   DATE DEFAULT NULL
 )
-SELECT 
-    month_start,
-    service_point_name,
-    action_type,
-    ct
+RETURNS TABLE (
+    month_start        DATE,
+    service_point_name TEXT,
+    action_type        TEXT,
+    ct                 INTEGER
+)
+LANGUAGE SQL
+AS $$
+/*──────────────────────── CTE #1 ─ Check‑outs ───────────────────────*/
+WITH checkout_actions AS (
+    SELECT
+        li.checkout_service_point_name            AS service_point_name,
+        date_trunc('month', li.loan_date)::date   AS month_start,   -- DATE ✔
+        'Checkout'                                AS action_type,
+        COUNT(li.loan_id)                         AS ct
+    FROM folio_derived.loans_items AS li
+    WHERE
+        (start_date IS NULL OR li.loan_date >= start_date)
+        AND (end_date   IS NULL OR li.loan_date <  end_date)
+        AND li.checkout_service_point_name <> 'Digital Media Studio'
+    GROUP BY 1, 2
+),
+
+/*──────────────────────── CTE #2 ─ Raw return events (Eastern) ─────*/
+simple_return_dates AS (
+    SELECT
+        li.checkin_service_point_name AS service_point_name,
+        /* 1. declare value is UTC, 2. convert to America/New_York  */
+        COALESCE(
+            (li.system_return_date AT TIME ZONE 'UTC') AT TIME ZONE 'America/New_York',
+            (li.loan_return_date   AT TIME ZONE 'UTC') AT TIME ZONE 'America/New_York'
+        )                                         AS action_date,
+        'Checkin'                                AS action_type,
+        li.loan_id
+    FROM folio_derived.loans_items AS li
+    WHERE li.checkin_service_point_name <> 'Digital Media Studio'
+),
+
+/*──────────────────────── CTE #3 ─ Monthly check‑ins ───────────────*/
+checkin_actions AS (
+    SELECT
+        srd.service_point_name,
+        date_trunc('month', srd.action_date)::date AS month_start,  -- DATE ✔
+        srd.action_type,
+        COUNT(srd.loan_id)                         AS ct
+    FROM simple_return_dates AS srd
+    WHERE
+        (start_date IS NULL OR srd.action_date >= start_date)
+        AND (end_date   IS NULL OR srd.action_date <  end_date)
+    GROUP BY 1, 2, 3
+)
+
+/*─────────────── Final UNION; enforce DATE one more time ───────────*/
+SELECT
+    combined.month_start::date                    AS month_start,   -- belt‑and‑suspenders cast
+    combined.service_point_name,
+    combined.action_type,
+    combined.ct
 FROM (
-    SELECT month_start, service_point_name, action_type, ct FROM checkout_actions
+    SELECT * FROM checkout_actions
     UNION ALL
-    SELECT month_start, service_point_name, action_type, ct FROM checkin_actions
-) combined
-ORDER BY combined.month_start, combined.service_point_name, combined.action_type;
+    SELECT * FROM checkin_actions
+) AS combined
+ORDER BY
+    combined.month_start,
+    combined.service_point_name,
+    combined.action_type;
 $$
 LANGUAGE SQL;
+
 
