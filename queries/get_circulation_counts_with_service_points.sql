@@ -5,7 +5,7 @@ CREATE FUNCTION get_circulation_counts_with_service_points(
     end_date DATE DEFAULT NULL
 ) 
 RETURNS TABLE (
-    month_start TEXT,
+    month_start DATE,
     service_point_name TEXT,
     action_type TEXT,
     ct INTEGER
@@ -50,7 +50,7 @@ checkin_actions AS (
     GROUP BY service_point_name, month_start, action_type
 )
 SELECT 
-    to_char(month_start, 'MM/YYYY') as month_start,
+    month_start,
     service_point_name,
     action_type,
     ct
