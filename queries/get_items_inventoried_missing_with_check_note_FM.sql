@@ -1,7 +1,13 @@
+--metadb:function get_items_inventoried_misssing_with_check_note_FM
+--This function retrieves all items with an item statistical code of Shelf Reading 2025 and with the item status of "missing". 
+--There is  column for an item note that will be populated if the item_note_type_name is Workflow-Missing Searched. If the item
+--record does not have a note with that not type name the column will be null.
+
+
 CREATE FUNCTION get_items_inventoried_missing_with_check_note_FM()
 
 RETURNS TABLE
-
+(
     item_barcode TEXT,
     item_call_number TEXT,
     item_title TEXT,
