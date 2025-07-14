@@ -1,0 +1,7 @@
+{
+    "displayName": "INVENTORY - Missing Checked List - FM",
+    "description": "This report lists items that have been inventoried and are missing",
+    "instructions": "No inputs needed.",
+    "parameters": [
+    ]
+}
