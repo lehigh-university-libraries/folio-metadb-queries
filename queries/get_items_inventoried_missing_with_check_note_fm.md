@@ -13,4 +13,4 @@ to keep track of how often and when and who searched for the missing book.
 | barcode | TEXT | The barcode assigned to the book | 39151010192645 |
 | item_call_number | TEXT | The item effective call number | 001.5 B927c |
 | title | TEXT | Book title | Mutational analysis |
-| item_item_note | TEXT | Note of item if note_type is 'Workflow-Missing Searched' | Checked 20250714 by LM in Lind|
+| missing_searched_note | TEXT | Note of item if note_type is 'Workflow-Missing Searched' | Checked 20250714 by LM in Lind|
