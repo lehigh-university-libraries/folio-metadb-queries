@@ -10,14 +10,11 @@ RETURNS TABLE
     item_barcode TEXT,
     item_call_number TEXT,
     item_title TEXT,
-    item_note TEXT
-    
+    item_note TEXT  
 ) 
 AS
 $$
-
 SELECT
- 
     ihi.barcode AS item_barcode,
     ie.effective_call_number AS item_call_number,
     ihi.title AS item_title,
@@ -31,7 +28,6 @@ FROM
 WHERE
     isc.statistical_code_name = 'Shelf Reading 2025'
     AND ie.status_name = 'Missing'
-    AND ie.effective_location_name LIKE 'Fairchild%';
-    
+    AND ie.effective_location_name LIKE 'Fairchild%';    
 $$
 LANGUAGE SQL;
