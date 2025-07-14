@@ -5,7 +5,7 @@ RETURNS TABLE
     item_barcode TEXT,
     item_call_number TEXT,
     item_title TEXT,
-    item_item_note TEXT
+    item_note TEXT
     
 ) 
 AS
