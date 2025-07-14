@@ -1,4 +1,4 @@
-CREATE FUNCTION get_items_inventories_misssing_with_check_note()
+CREATE FUNCTION get_items_inventories_missing_with_check_note()
 
 RETURNS TABLE
 
