@@ -10,7 +10,7 @@ RETURNS TABLE
     item_barcode TEXT,
     item_call_number TEXT,
     item_title TEXT,
-    item_note TEXT  
+    missing_searched_note TEXT  
 ) 
 AS
 $$
@@ -18,7 +18,7 @@ SELECT
     ihi.barcode AS item_barcode,
     ie.effective_call_number AS item_call_number,
     ihi.title AS item_title,
-    in2.note AS item_note  -- Only shows note if type matches
+    in2.note AS missing_searched_note  -- Only shows note if type matches
 FROM
     folio_derived.items_holdings_instances ihi
     JOIN folio_derived.item_ext ie ON ie.item_id = ihi.item_id
