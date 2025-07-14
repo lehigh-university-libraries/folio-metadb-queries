@@ -5,7 +5,6 @@
 
 
 CREATE FUNCTION get_items_inventoried_missing_with_check_note_FM()
-
 RETURNS TABLE
 (
     item_barcode TEXT,
