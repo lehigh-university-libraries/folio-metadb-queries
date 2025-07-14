@@ -2,8 +2,6 @@ CREATE FUNCTION get_items_inventoried_missing_with_check_note_FM()
 
 RETURNS TABLE
 
-(
-    item_hrid TEXT,
     item_barcode TEXT,
     item_call_number TEXT,
     item_title TEXT,
@@ -14,7 +12,7 @@ AS
 $$
 
 SELECT
-    ihi.item_hrid AS item_hrid,
+ 
     ihi.barcode AS item_barcode,
     ie.effective_call_number AS item_call_number,
     ihi.title AS item_title,
