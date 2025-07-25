@@ -1,0 +1,7 @@
+{
+    "displayName": "CIRCULATION - Outstanding fines with patron information",
+    "description": "This report lists outstanding fines with patron information",
+    "instructions": "No inputs needed.",
+    "parameters": [
+    ]
+}
