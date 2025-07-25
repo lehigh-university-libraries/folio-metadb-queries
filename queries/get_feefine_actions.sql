@@ -7,8 +7,8 @@ CREATE FUNCTION get_feefine_actions(
 RETURNS TABLE (
     action_date DATE,
     action_type TEXT,
-    action_amount INTEGER,
-    account_balance INTEGER,
+    action_amount NUMERIC,
+    account_balance NUMERIC,
     fine_status TEXT,
     operator_id TEXT,
     user_barcode INTEGER,
