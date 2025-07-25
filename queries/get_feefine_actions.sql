@@ -11,10 +11,10 @@ RETURNS TABLE (
     account_balance NUMERIC,
     fine_status TEXT,
     operator_id TEXT,
-    user_barcode INTEGER,
+    user_barcode TEXT,
     last_name TEXT,
     title TEXT,
-    item_barcode INTEGER,
+    item_barcode TEXT,
     returned_date DATE
 ) 
 AS 
