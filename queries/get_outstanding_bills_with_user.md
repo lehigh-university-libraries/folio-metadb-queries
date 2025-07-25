@@ -10,8 +10,8 @@ This report shows a list of outstanding bills and includes patron information.
 | --- | --- | --- | --- |
 | action_date | DATE | action date | 2021-10-06 |
 | action_type | TEXT | bill action type | Lost item fee |
-| bill_amount |INTEGER| amount of outstanding bill | 150 |
-| account_balance |INTEGER| account balance | 150 |
+| bill_amount |NUMERIC| amount of outstanding bill | 150 |
+| account_balance |NUMERIC| account balance | 150 |
 | user_barcode | TEXT | Lehigh LIN | 800000000 |
 | last_name | TEXT | Last Name | Smith |
 | item_title | TEXT | item title | Dream work / Mary Oliver. |
