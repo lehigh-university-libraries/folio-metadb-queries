@@ -20,7 +20,7 @@ $$
 select cast(faa.transaction_date as DATE) as action_date, 
 faa.type_action as action_type,
 faa.transaction_amount as bill_amount, 
-faa.account_balance, 
+faa.account_balance as account_balance, 
 ug2.barcode AS user_barcode,  
 ug2.user_last_name AS last_name,
 ffa.title as item_title,
