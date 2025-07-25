@@ -11,7 +11,7 @@ RETURNS TABLE
     user_barcode TEXT,
     username TEXT,
     user_last_name TEXT,
-    item_title TEXT
+    item_title TEXT,
     item_call_number TEXT,
     item_barcode TEXT
 ) 
