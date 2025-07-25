@@ -9,7 +9,6 @@ RETURNS TABLE
     bill_amount NUMERIC,
     account_balance NUMERIC,
     user_barcode TEXT,
-    username TEXT,
     last_name TEXT,
     item_title TEXT,
     item_call_number TEXT,
