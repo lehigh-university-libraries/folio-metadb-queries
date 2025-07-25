@@ -6,8 +6,8 @@ RETURNS TABLE
 (
     action_date DATE,
     action_type TEXT,    
-    bill_amount NUMERIC,
-    account_balance NUMERIC,
+    bill_amount INTEGER,
+    account_balance INTEGER,
     user_barcode TEXT,
     username TEXT,
     last_name TEXT,
