@@ -3,11 +3,6 @@
 ## Purpose
 The report shows lists all of the books in the Rodale Collection as they are cataloged and not suppressed. This is for the purpose of having a collection list, but also doing cataloging checks.
 
-## Parameters
-
-|Parameter|Position|Type|Default value|Sample input|
-|---|---|---|---|---|
-|param_loans_items|1|TEXT|''|Start date and end date, e.g. 2024-01-01 to 2025-01-01|
 
 ## Output table
 
