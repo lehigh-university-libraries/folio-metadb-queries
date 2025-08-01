@@ -1,5 +1,6 @@
 --metadb:function get_items_from_rodale_collection
 -- This function retrieves all items that are in the Rodale Collection. This is a cataloging check as well as a reporting list
+DROP FUNCTION IF EXISTS get_items_from_rodale_collection;
 CREATE FUNCTION get_items_from_rodale_collection()
 RETURNS TABLE
 (   
