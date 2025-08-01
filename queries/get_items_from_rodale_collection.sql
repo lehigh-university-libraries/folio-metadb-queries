@@ -1,7 +1,6 @@
 --metadb:function get_items_from_rodale_collection
 -- This function retrieves all items that are in the Rodale Collection. This is a cataloging check as well as a reporting list
 CREATE FUNCTION get_items_from_rodale_collection()
-
 RETURNS TABLE
 (   
 item_barcode TEXT,
@@ -22,7 +21,6 @@ instance_notes TEXT
 ) 
 AS
 $$
-
 SELECT
   ie2.barcode AS item_barcode,
   ie2.status_name AS item_status,
@@ -39,7 +37,6 @@ SELECT
   ie.instance_id AS instance_id,
   ie.instance_hrid AS instance_hrid,
   STRING_AGG(in2.instance_note, '; ') AS instance_notes
-
 FROM
   folio_inventory.item__t it 
   LEFT JOIN folio_derived.item_ext ie2 ON ie2.item_id = it.id 
@@ -50,13 +47,11 @@ FROM
   LEFT JOIN folio_derived.instance_ext ie ON ie.instance_id = it2.id
   LEFT JOIN folio_derived.instance_notes in2 
     ON in2.instance_id = it2.id AND in2.instance_note_type_name = 'Local notes'
-
 WHERE
   ie2.effective_location_name = 'Goodman 125 - Room 101a'
   AND (it.discovery_suppress::BOOLEAN <> TRUE OR it.discovery_suppress IS NULL)
   AND (hrt.discovery_suppress::BOOLEAN <> TRUE OR hrt.discovery_suppress IS NULL)
   AND (it2.discovery_suppress::BOOLEAN <> TRUE OR it2.discovery_suppress IS NULL)
-
 GROUP BY
   ie2.barcode,
   ie2.status_name,
@@ -72,6 +67,5 @@ GROUP BY
   he.permanent_location_name,
   ie.instance_id,
   ie.instance_hrid;
- 
 $$
 LANGUAGE SQL STABLE;
