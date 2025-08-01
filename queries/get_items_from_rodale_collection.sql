@@ -9,18 +9,15 @@ item_status TEXT,
 item_material_type TEXT,
 item_updated DATE,
 item_accession_number TEXT,
-item_suppress TEXT,
 item_permanent_location TEXT,
 holdings_id TEXT,
 holdings_hrid TEXT,
-holdings_suppress TEXT,
 holdings_call_numb TEXT,
 holdings_call_numb_type TEXT,
 holdings_type TEXT,
 holdings_location TEXT,
 instance_id TEXT,
 instance_hrid TEXT,
-instance_suppress TEXT,
 instance_notes TEXT
 ) 
 AS
@@ -32,18 +29,15 @@ SELECT
   ie2.material_type_name AS item_material_type,
   ie2.updated_date AS item_updated,
   ie2.accession_number AS item_accession_number,
-  ie2.discovery_suppress AS item_suppress,
   ie2.permanent_location_name AS item_permanent_location,
   he.holdings_id AS holdings_id,
   he.holdings_hrid AS holdings_hrid,
-  he.discovery_suppress AS holdings_suppress,
   he.call_number AS holdings_call_numb,
   he.call_number_type_name AS holdings_call_numb_type,
   he.type_name AS holdings_type,
   he.permanent_location_name AS holdings_location,
   ie.instance_id AS instance_id,
   ie.instance_hrid AS instance_hrid,
-  ie.discovery_suppress AS instance_suppress,
   STRING_AGG(in2.instance_note, '; ') AS instance_notes
 
 FROM
@@ -69,18 +63,15 @@ GROUP BY
   ie2.material_type_name,
   ie2.updated_date,
   ie2.accession_number,
-  ie2.discovery_suppress,
   ie2.permanent_location_name,
   he.holdings_id,
   he.holdings_hrid,
-  he.discovery_suppress,
   he.call_number,
   he.call_number_type_name,
   he.type_name,
   he.permanent_location_name,
   ie.instance_id,
-  ie.instance_hrid,
-  ie.discovery_suppress;
+  ie.instance_hrid;
  
 $$
 LANGUAGE SQL STABLE;
