@@ -26,7 +26,7 @@ SELECT
   ie2.barcode AS item_barcode,
   ie2.status_name AS item_status,
   ie2.material_type_name AS item_material_type,
-  ie2.updated_date AS item_updated,
+  ie2.updated_date::DATE AS item_updated,
   ie2.accession_number AS item_accession_number,
   ie2.permanent_location_name AS item_permanent_location,
   he.holdings_id AS holdings_id,
