@@ -35,6 +35,6 @@ WHERE li.loan_status = 'Open'
         AND li.loan_due_date < CURRENT_DATE
         AND li.patron_group_name IN ('ill', 'palciuser')
         AND ie.discovery_suppress = 'False'
-ORDER BY ie.effective_call_number;
+ORDER by aloan_due_date ASC;
 $$
 LANGUAGE SQL STABLE;
