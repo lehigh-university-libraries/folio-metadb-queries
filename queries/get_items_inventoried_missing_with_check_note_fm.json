@@ -1,5 +1,5 @@
 {
-    "displayName": "INVENTORY - Missing and needs to be checked - FM",
+    "displayName": "INVENTORY - Missing and needs to be searched - FM",
     "description": "This report lists items noted Missing in the Inventory at FM. They need to be followed up with a check and a search note. ",
     "instructions": "No inputs needed.",
     "parameters": [
