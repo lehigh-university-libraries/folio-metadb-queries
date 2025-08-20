@@ -30,7 +30,7 @@ WHERE
     inot.note LIKE 'Shelf status: Unavailable item is on shelf%'
     AND iext.status_name != 'Available'
 ORDER BY
-    location_name,
+    item_location,
     call_number;
 $$
 LANGUAGE SQL;
