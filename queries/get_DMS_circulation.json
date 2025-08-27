@@ -13,7 +13,7 @@
     {
       "name": "end_date",
       "displayName": "End Date",
-      "type": "string",
+      "type": "date",
       "format": "date",
       "required": false
     }
