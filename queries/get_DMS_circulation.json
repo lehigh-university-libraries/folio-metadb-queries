@@ -6,15 +6,15 @@
     {
       "name": "start_date",
       "displayName": "Start Date",
-      "type": "string",
-      "format": "date-time",
+      "type": "date",
+      "format": "date",
       "required": false
     },
     {
       "name": "end_date",
       "displayName": "End Date",
       "type": "string",
-      "format": "date-time",
+      "format": "date",
       "required": false
     }
   ]
