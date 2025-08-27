@@ -1,5 +1,5 @@
 {
-    "displayName": "List historical loans from DMS service point for a given time period.",
+    "displayName": "DMS CIRCULATION - list transactions,
     "description": "This report lists circulation transactions from the DMS service point.",
     "instructions": "Date parameters may be input.",
     "parameters": [
