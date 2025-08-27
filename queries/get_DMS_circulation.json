@@ -1,0 +1,7 @@
+{
+    "displayName": "List historical loans from DMS service point for a given time period.",
+    "description": "This report lists circulation transactions from the DMS service point.",
+    "instructions": "Date parameters may be input.",
+    "parameters": [
+    ]
+}
