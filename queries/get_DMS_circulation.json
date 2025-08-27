@@ -1,7 +1,22 @@
 {
-    "displayName": "DMS CIRCULATION - list transactions",
-    "description": "This report lists circulation transactions from the DMS service point.",
-    "instructions": "Date parameters may be input.",
-    "parameters": [
-    ]
+  "displayName": "DMS CIRCULATION - list transactions",
+  "description": "This report lists circulation transactions from the DMS service point.",
+  "instructions": "Input a start date of the period of time and/or an end date or leave the date fields empty",
+  "parameters": [
+    {
+      "name": "start_date",
+      "displayName": "Start Date",
+      "type": "string",
+      "format": "date-time",
+      "required": false
+    },
+    {
+      "name": "end_date",
+      "displayName": "End Date",
+      "type": "string",
+      "format": "date-time",
+      "required": false
+    }
+  ]
 }
+
