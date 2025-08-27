@@ -1,5 +1,5 @@
 {
-    "displayName": "DMS CIRCULATION - list transactions,
+    "displayName": "DMS CIRCULATION - list transactions",
     "description": "This report lists circulation transactions from the DMS service point.",
     "instructions": "Date parameters may be input.",
     "parameters": [
