@@ -1,4 +1,5 @@
 --metadb:function get_DMS_circulation
+
 DROP FUNCTION IF EXISTS get_DMS_circulation;
 
 CREATE FUNCTION get_DMS_circulation(
@@ -15,8 +16,8 @@ RETURNS TABLE (
 LANGUAGE SQL
 AS $$
     SELECT
-        CAST(lt.loan_date AS DATE) AS loan_date,
-        g.group AS patron_group,
+        lt.loan_date::DATE AS loan_date,
+        g."group" AS patron_group,   -- "group" is reserved, must be quoted
         ie.barcode,
         ie.effective_call_number AS call_number,
         ihi.title
@@ -28,7 +29,13 @@ AS $$
     LEFT JOIN folio_users.groups__t AS g 
         ON lt.patron_group_id_at_checkout = g.id
     WHERE 
-    (start_date IS NULL OR lt.loan_date::DATE >= start_date)
-    AND (end_date IS NULL OR lt.loan_date::DATE <= end_date)
-    ORDER BY lt.loan_date DESC
+        (start_date IS NULL OR lt.loan_date::DATE >= start_date)
+        AND (end_date IS NULL OR lt.loan_date::DATE <= end_date);
 $$;
+
+DROP VIEW IF EXISTS get_DMS_circulation_ordered;
+
+CREATE VIEW get_DMS_circulation_ordered AS
+SELECT *
+FROM get_DMS_circulation(NULL, NULL)
+ORDER BY loan_date DESC;
