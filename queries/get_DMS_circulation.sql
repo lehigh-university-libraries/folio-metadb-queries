@@ -30,7 +30,8 @@ AS $$
         ON lt.patron_group_id_at_checkout = g.id
     WHERE 
         (start_date IS NULL OR lt.loan_date::DATE >= start_date)
-        AND (end_date IS NULL OR lt.loan_date::DATE <= end_date);
+        AND (end_date IS NULL OR lt.loan_date::DATE <= end_date)
+        AND lt.checkout_service_point_id = '99f509c0-1383-4f29-8fde-ff6970a4a8fe';
 $$;
 
 DROP VIEW IF EXISTS get_DMS_circulation_ordered;
