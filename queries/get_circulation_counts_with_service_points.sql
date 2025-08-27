@@ -1,6 +1,5 @@
 --metadb:function get_circulation_counts_with_service_points
 DROP FUNCTION IF EXISTS get_circulation_counts_with_service_points;
-
 CREATE FUNCTION get_circulation_counts_with_service_points(
     start_date DATE DEFAULT NULL,
     end_date DATE DEFAULT NULL
@@ -58,7 +57,7 @@ FROM (
     UNION ALL
     SELECT month_start, service_point_name, action_type, ct FROM checkin_actions
 ) combined
-ORDER BY combined.month_start, combined.service_point_name, combined.action_type;
+ORDER BY combined.month_start DESC, combined.service_point_name, combined.action_type;
 $$
 LANGUAGE SQL;
 
