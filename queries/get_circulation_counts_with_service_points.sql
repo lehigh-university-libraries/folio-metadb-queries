@@ -42,9 +42,7 @@ checkin_actions AS (
         action_type,
         count(loan_id) AS ct
     FROM simple_return_dates
-    WHERE 
-        (start_date IS NULL OR action_date >= start_date)
-        AND (end_date IS NULL OR action_date < end_date)
+    WHERE action_date IS NOT NULL  -- This will exclude the nulls
     GROUP BY service_point_name, month_start, action_type
 )
 SELECT 
