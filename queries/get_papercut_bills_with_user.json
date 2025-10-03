@@ -1,0 +1,7 @@
+{
+    "displayName": "BURSAR - Get Papercut bills with patron information",
+    "description": "This report lists outstanding Papercut bills with patron information",
+    "instructions": "No inputs needed.",
+    "parameters": [
+    ]
+}

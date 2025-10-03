@@ -1,0 +1,7 @@
+{
+    "displayName": "INVENTORY - Condition Note - Minor",
+    "description": "This report lists items with item condition note Minor",
+    "instructions": "No inputs needed.",
+    "parameters": [
+    ]
+}

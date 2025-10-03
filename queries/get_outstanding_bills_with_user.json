@@ -1,5 +1,5 @@
 {
-    "displayName": "CIRCULATION - Outstanding bills with patron information",
+    "displayName": "BURSAR - Outstanding bills with patron information",
     "description": "This report lists outstanding bills with patron information",
     "instructions": "No inputs needed.",
     "parameters": [

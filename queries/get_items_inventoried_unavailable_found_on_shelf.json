@@ -1,0 +1,7 @@
+{
+    "displayName": "INVENTORY - Unavailable items found on shelf",
+    "description": "This report returns items inventoried with message 'unavailable item found on shelf'",
+    "instructions": "No inputs needed.",
+    "parameters": [
+    ]
+}

@@ -1,0 +1,19 @@
+{
+    "displayName": "BURSAR - Get FeeFine Actions",
+    "description": "List feefine actions for a given timeframe",
+    "instructions": "Input beginning month and end month (in format 2025-01-01) or leave the date fields empty",
+    "parameters": [
+        {
+            "name": "start_date",
+            "displayName": "Start Date",
+            "type": "date",
+            "required": false
+        },
+        {
+            "name": "end_date",
+            "displayName": "End Date",
+            "type": "date",
+            "required": false
+        }
+    ]
+}
