@@ -1,3 +1,4 @@
+-- get_fund_expenses_by_group
 with fund_group as (
 	select fund__t.id as fund_id, fund__t.code as fund_code, groups__t.code as group_code, groups__t.name as group_name
 	from folio_finance.fund__t fund__t
