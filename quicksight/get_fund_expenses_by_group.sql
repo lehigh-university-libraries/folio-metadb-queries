@@ -2,26 +2,26 @@
 
 CREATE OR REPLACE FUNCTION get_fund_expenses_by_group()
 RETURNS TABLE (
-  budget_name TEXT,
-  initial_allocation NUMERIC,
-  allocation_to NUMERIC,
-  allocation_from NUMERIC,
-  total_allocated NUMERIC,
-  net_transfers NUMERIC,
-  total_funding NUMERIC,
-  expenditures NUMERIC,
-  encumbered NUMERIC,
-  awaiting_payment NUMERIC,
-  credits NUMERIC,
-  unavailable NUMERIC,
-  available_balance NUMERIC,
-  cash_balance NUMERIC,
-  fund_code TEXT,
-  material_group_code TEXT,
-  material_group_name TEXT,
-  college_group_code TEXT,
-  college_group_name TEXT,
-  fiscal_year_code TEXT
+    budget_name TEXT,
+    initial_allocation NUMERIC,
+    allocation_to NUMERIC,
+    allocation_from NUMERIC,
+    total_allocated NUMERIC,
+    net_transfers NUMERIC,
+    total_funding NUMERIC,
+    expenditures NUMERIC,
+    encumbered NUMERIC,
+    awaiting_payment NUMERIC,
+    credits NUMERIC,
+    unavailable NUMERIC,
+    available_balance NUMERIC,
+    cash_balance NUMERIC,
+    fund_code TEXT,
+    material_group_code TEXT,
+    material_group_name TEXT,
+    college_group_code TEXT,
+    college_group_name TEXT,
+    fiscal_year_code TEXT
 )
 AS
 $$
@@ -67,4 +67,4 @@ JOIN folio_finance.fiscal_year__t fy__t ON budget__t.fiscal_year_id = fy__t.id
 JOIN material_fund ON fund__t.code = material_fund.fund_code
 JOIN college_fund ON fund__t.code = college_fund.fund_code;
 $$
-LANGUAGE SQL;
+LANGUAGE sql;
