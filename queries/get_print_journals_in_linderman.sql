@@ -1,26 +1,30 @@
---metadb:function get_print_journals_in_linderman
--- This function retrieves print journals that are located in Linderman.
+/*Print journals in Linderman. Last update 10-10-2025*/
+
+/* metadb:function get_print_journals_in_linderman
+   This function retrieves print journals that are located in Linderman. */
 DROP FUNCTION IF EXISTS get_print_journals_in_linderman;
 CREATE FUNCTION get_print_journals_in_linderman()
 RETURNS TABLE
 ( 
-instance_id TEXT,
-instance_hrid TEXT,
-title TEXT,
-item_material_type TEXT,
-item_status TEXT,
-linderman_reading_room_location TEXT,
-linderman_reading_room_statement TEXT,
-linderman_reading_room_receipt_status TEXT,
-linderman_reading_room_bindery_note TEXT,
-linderman_reading_room_binding_frequency_note TEXT,
-linderman_reading_room_journal_publication_frequency_note TEXT,
-linderman_lower_level_location TEXT,
-linderman_lower_level_statement TEXT,
-linderman_lower_level_receipt_status TEXT,
-linderman_lower_level_bindery_note TEXT,
-linderman_lower_level_binding_frequency_note TEXT,
-linderman_lower_level_journal_publication_frequency_note TEXT
+    instance_id TEXT,
+    instance_hrid TEXT,
+    title TEXT,
+    item_material_type TEXT,
+    item_status TEXT,
+    linderman_reading_room_location TEXT,
+    linderman_reading_room_statement TEXT,
+    linderman_reading_room_receipt_status TEXT,
+    linderman_reading_room_call_number TEXT,
+    linderman_reading_room_bindery_note TEXT,
+    linderman_reading_room_binding_frequency_note TEXT,
+    linderman_reading_room_journal_publication_frequency_note TEXT,
+    linderman_lower_level_location TEXT,
+    linderman_lower_level_statement TEXT,
+    linderman_lower_level_receipt_status TEXT,
+    linderman_lower_level_call_number TEXT,
+    linderman_lower_level_bindery_note TEXT,
+    linderman_lower_level_binding_frequency_note TEXT,
+    linderman_lower_level_journal_publication_frequency_note TEXT
 )
 AS
 $$
@@ -44,6 +48,10 @@ SELECT
             WHEN he.permanent_location_name = 'Linderman 1st Floor - Reading Room - Current Periodicals'
             THEN he.receipt_status 
         END) AS linderman_reading_room_receipt_status,
+    MAX(CASE 
+            WHEN he.permanent_location_name = 'Linderman 1st Floor - Reading Room - Current Periodicals'
+            THEN he.call_number
+        END) AS linderman_reading_room_call_number,
     MAX(CASE 
             WHEN he.permanent_location_name = 'Linderman 1st Floor - Reading Room - Current Periodicals'
                  AND hn.note_type_name = 'Bindery'
@@ -73,6 +81,10 @@ SELECT
             WHEN he.permanent_location_name = 'Linderman Ground Floor - Lower Level'
             THEN he.receipt_status 
         END) AS linderman_lower_level_receipt_status,
+    MAX(CASE 
+            WHEN he.permanent_location_name = 'Linderman Ground Floor - Lower Level'
+            THEN he.call_number
+        END) AS linderman_lower_level_call_number,
     MAX(CASE 
             WHEN he.permanent_location_name = 'Linderman Ground Floor - Lower Level'
                  AND hn.note_type_name = 'Bindery'
