@@ -15,12 +15,14 @@ The report is to show all print journals held in Linderman along with informatio
 | linderman_reading_room_location | TEXT | The number of times book was loaned | Linderman 1st Floor - Reading Room - Current Periodicals |
 | linderman_reading_room_statement | TEXT | Number of years kept in Current Periodicals | Latest 3 years kept in Current Periodicals. |
 | linderman_reading_room_receipt_status | TEXT | Do we currently receive this journal, initials, year and month that was last determined | Currently received (LM 10-25) |
+| linderman_reading_room_call_number | TEXT | If currently received then the call number should be Current Periodicals | Current Periodicals |
 | linderman_reading_room_bindery_note | TEXT | FOLIO instance hrid | should be blank for current periodicals |
 | linderman_reading_room_binding_frequency_note | TEXT | FOLIO instance hrid | should be blank for current periodicals |
 | linderman_reading_room_journal_publication_frequency_note | TEXT| FOLIO instance hrid | should be blank for current periodicals |
 | linderman_lower_level_location | TEXT | Shelving location of bound journals | Linderman Ground Floor - Lower Level |
 | linderman_lower_level_statement | TEXT | Full holdings statement | 1-20,22- (1955-) |
 | linderman_lower_level_receipt_status | TEXT | FOLIO instance hrid | should be blank for bound periodicals |
+| linderman_lower_level_call_number | TEXT | If held in LL then there should be a Dewey number | 916 A258 |
 | linderman_lower_level_bindery_note | TEXT | Do we bind?, initials, year and month that was last determined | Currently bound (RAB 10-25) |
 | linderman_lower_level_binding_frequency_note | TEXT | How many issues typically get bound together | 6 issues per volume |
 | linderman_lower_level_journal_publication_frequency_note | TEXT | How many issues typcially are issue per year?| 3 issues per year |
