@@ -1,0 +1,7 @@
+{
+    "displayName": "Collection - List print journals in Linderman",
+    "description": "This report lists print journals that are in the Linderman library, both bound and loose",
+    "instructions": "No inputs needed.",
+    "parameters": [
+    ]
+}
