@@ -1,7 +1,5 @@
-/*Print journals in Linderman. Last update 10-10-2025*/
-
-/* metadb:function get_print_journals_in_linderman
-   This function retrieves print journals that are located in Linderman. */
+--metadb:function get_print_journals_in_linderman
+--This function retrieves print journals that are located in Linderman.
 DROP FUNCTION IF EXISTS get_print_journals_in_linderman;
 CREATE FUNCTION get_print_journals_in_linderman()
 RETURNS TABLE
@@ -133,7 +131,6 @@ GROUP BY
     ie2.material_type_name,
     ie2.status_name
 ORDER BY
-    it2.title
-;
+    it2.title;
 $$
 LANGUAGE SQL STABLE;
