@@ -1,5 +1,5 @@
---metadb:get_funds_WITHout_group
--- Get a list of active funds ON active ledgers, with no assigned material group, or no assigned college group
+--metadb:get_funds_without_group
+-- Get a list of active funds on active ledgers, with no assigned material group, or no assigned college group
 CREATE OR REPLACE FUNCTION get_funds_without_group()
 RETURNS TABLE (
     ledger_name TEXT,
