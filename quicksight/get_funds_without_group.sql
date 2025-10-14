@@ -1,41 +1,53 @@
--- get_funds_without_group
--- Get a list of active funds with no assigned material group, or no assigned college group
-with fund_group as (
-    select fund__t.id as fund_id,
-        fund__t.code as fund_code,
-        groups__t.code as group_code,
-        groups__t.name as group_name
-    from folio_finance.fund__t fund__t
-        left join folio_finance.group_fund_fiscal_year__t gffy__t on gffy__t.fund_id = fund__t.id
-        left join folio_finance.groups__t groups__t on gffy__t.group_id = groups__t.id
-),
-material_fund as (
-    select fund_code,
-        group_code,
-        group_name
-    from fund_group
-    where group_code like 'ALL-%'
-),
-college_fund as (
-    select fund_code,
-        group_code,
-        group_name
-    from fund_group
-    where group_code like 'C-%'
+--metadb:get_funds_WITHout_group
+-- Get a list of active funds ON active ledgers, with no assigned material group, or no assigned college group
+CREATE OR REPLACE FUNCTION get_funds_without_group()
+RETURNS TABLE (
+    ledger_name TEXT,
+    fund_code TEXT,
+    fund_name TEXT,
+    material_group_name TEXT,
+    college_group_name TEXT
 )
-select ledger__t.name as ledger_name,
-    fund__t.code as fund_code,
-    fund__t.name as fund_name,
-    material_fund.group_name as material_group_name,
-    college_fund.group_name as college_group_name
-from folio_finance.fund__t fund__t
-    left join material_fund on fund__t.code = material_fund.fund_code
-    left join college_fund on fund__t.code = college_fund.fund_code
-    join folio_finance.ledger__t ledger__t on fund__t.ledger_id = ledger__t.id
-where fund__t.fund_status = 'Active'
-    and (
-        material_fund.group_name is null
-        or college_fund.group_name is null
+AS
+$$
+WITH fund_group AS (
+    SELECT fund__t.id AS fund_id,
+        fund__t.code AS fund_code,
+        groups__t.code AS group_code,
+        groups__t.name AS group_name
+    FROM folio_finance.fund__t fund__t
+        LEFT JOIN folio_finance.group_fund_fiscal_year__t gffy__t ON gffy__t.fund_id = fund__t.id
+        LEFT JOIN folio_finance.groups__t groups__t ON gffy__t.group_id = groups__t.id
+),
+material_fund AS (
+    SELECT fund_code,
+        group_code,
+        group_name
+    FROM fund_group
+    WHERE group_code like 'ALL-%'
+),
+college_fund AS (
+    SELECT fund_code,
+        group_code,
+        group_name
+    FROM fund_group
+    WHERE group_code like 'C-%'
+)
+SELECT ledger__t.name AS ledger_name,
+    fund__t.code AS fund_code,
+    fund__t.name AS fund_name,
+    material_fund.group_name AS material_group_name,
+    college_fund.group_name AS college_group_name
+FROM folio_finance.fund__t fund__t
+    LEFT JOIN material_fund ON fund__t.code = material_fund.fund_code
+    LEFT JOIN college_fund ON fund__t.code = college_fund.fund_code
+    JOIN folio_finance.ledger__t ledger__t ON fund__t.ledger_id = ledger__t.id
+WHERE fund__t.fund_status = 'Active'
+    AND (
+        material_fund.group_name IS NULL
+        OR college_fund.group_name IS NULL
     )
-order by ledger_name,
-    fund_code
+ORDER BY ledger_name,
+    fund_code;
+$$
+LANGUAGE sql;
