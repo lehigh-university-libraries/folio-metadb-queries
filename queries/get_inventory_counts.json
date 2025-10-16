@@ -1,0 +1,7 @@
+{
+    "displayName": "INVENTORY - Count Library totals",
+    "description": "This report lists totals by Library for Inventory2025.",
+    "instructions": "No inputs needed.",
+    "parameters": [
+    ]
+}
