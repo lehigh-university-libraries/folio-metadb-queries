@@ -7,12 +7,13 @@
             "name": "location_filter",
             "type": "string",
             "description": "Library location to include in the report",
-            "enum": [
+            "options": [
                 "Linderman Library",
                 "Fairchild Martindale Library",
                 "Library Materials Center (LMC)",
                 "All Locations"
-            ]
+            ],
+            "default": "All Locations"
         }
     ]
 }
