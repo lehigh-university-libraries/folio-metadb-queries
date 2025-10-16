@@ -12,13 +12,13 @@
                 "enum": [
                     "Linderman Library",
                     "Fairchild Martindale Library",
-                    "Library Materials Center"
+                    "Library Materials Center (LMC)"
                 ]
             },
             "default": [
                 "Linderman Library",
                 "Fairchild Martindale Library",
-                "Library Materials Center"
+                "Library Materials Center (LMC)"
             ]
         }
     ]
