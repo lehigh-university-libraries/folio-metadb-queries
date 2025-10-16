@@ -6,9 +6,15 @@
         {
             "name": "location_filter",
             "displayName": "Location",
-            "type": "text",
+            "type": "select",
             "required": false,
-            "default": "All Locations"
+            "default": "All Locations",
+            "options": [
+                "All Locations",
+                "Linderman Library",
+                "Fairchild Martindale Library",
+                "Library Materials Center (LMC)"
+            ]
         }
     ]
 }
