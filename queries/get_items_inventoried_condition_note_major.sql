@@ -1,6 +1,6 @@
---metadb:function get_items_inventoried_condition_note_major
+--metadb:function get_items_with_condition_note_major
 -- This function retrieves all items with an Inventory Condition Note that is Major, filtered by location.
-CREATE FUNCTION get_items_inventoried_condition_note_major(location_filter TEXT[] DEFAULT ARRAY['Linderman Library', 'Fairchild Martindale Library', 'Library Materials Center'])
+CREATE FUNCTION get_items_with_condition_note_major(location_filter TEXT DEFAULT 'All Locations')
 RETURNS TABLE
 (
     library_name TEXT,
@@ -25,6 +25,6 @@ FROM
 WHERE
     in2.note_type_name = 'Inventoried Condition'
     AND in2.note LIKE 'Major%'
-    AND ll.library_name = ANY(location_filter)
+    AND (location_filter = 'All Locations' OR ll.library_name = location_filter)
 $$
 LANGUAGE SQL;
