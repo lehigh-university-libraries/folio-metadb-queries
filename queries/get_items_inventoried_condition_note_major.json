@@ -4,7 +4,7 @@
     "instructions": "Select a location to filter the report.",
     "parameters": [
         {
-            "name": "location",
+            "name": "location_filter",
             "type": "string",
             "description": "Library location to include in the report",
             "enum": [
