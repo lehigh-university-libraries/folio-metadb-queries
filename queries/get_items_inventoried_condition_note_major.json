@@ -1,17 +1,17 @@
 {
-    "displayName": "INVENTORY - Condition Note - Major",
+    "displayName": "INVENTORY - MAJOR Condition Note by Library",
     "description": "This report lists items with item condition note Major",
     "instructions": "Select a location to filter the report.",
     "parameters": [
         {
             "name": "location_filter",
-            "type": "string",
+            "type": "select",
             "description": "Library location to include in the report",
             "options": [
+                "All Locations",
                 "Linderman Library",
                 "Fairchild Martindale Library",
-                "Library Materials Center (LMC)",
-                "All Locations"
+                "Library Materials Center (LMC)"
             ],
             "default": "All Locations"
         }
