@@ -1,0 +1,25 @@
+{
+    "displayName": "INVENTORY - Condition Note - Major by location",
+    "description": "This report lists items with item condition note Major",
+    "instructions": "Select one or more locations to filter the report. If no locations are selected, all locations will be included.",
+    "parameters": [
+        {
+            "name": "location",
+            "type": "array",
+            "description": "Library location(s) to include in the report",
+            "items": {
+                "type": "string",
+                "enum": [
+                    "Linderman Library",
+                    "Fairchild Martindale Library",
+                    "Library Materials Center"
+                ]
+            },
+            "default": [
+                "Linderman Library",
+                "Fairchild Martindale Library",
+                "Library Materials Center"
+            ]
+        }
+    ]
+}
