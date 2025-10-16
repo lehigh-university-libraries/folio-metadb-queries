@@ -1,5 +1,5 @@
 {
-    "displayName": "INVENTORY - Condition Note - Major",
+    "displayName": "INVENTORY - Condition Note - Major by location",
     "description": "This report lists items with item condition note Major",
     "instructions": "Enter a location: Linderman Library, Fairchild Martindale Library, Library Materials Center (LMC), or All Locations",
     "parameters": [
