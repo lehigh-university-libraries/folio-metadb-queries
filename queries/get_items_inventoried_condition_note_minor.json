@@ -1,0 +1,20 @@
+{
+    "displayName": "INVENTORY - Condition Note Minor with location",
+    "description": "This report lists items with item condition note Minor",
+    "instructions": "Enter a location: Linderman Library, Fairchild Martindale Library, Library Materials Center (LMC), or All Locations",
+    "parameters": [
+        {
+            "name": "location_filter",
+            "displayName": "Location",
+            "type": "select",
+            "required": false,
+            "default": "All Locations",
+            "options": [
+                "All Locations",
+                "Linderman Library",
+                "Fairchild Martindale Library",
+                "Library Materials Center (LMC)"
+            ]
+        }
+    ]
+}
