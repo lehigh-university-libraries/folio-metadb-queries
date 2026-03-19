@@ -57,6 +57,6 @@ FROM (
         ) ug ON li.user_id = ug.user_id
 WHERE li.patron_group_name NOT IN ('ill', 'palciuser', 'libraryuse')
         AND ie.discovery_suppress = 'False'
-ORDER BY ie.effective_call_number;
+ORDER BY loan_due_date, patron_last_name, patron_barcode, ie.effective_call_number;
 $$
 LANGUAGE SQL STABLE;
