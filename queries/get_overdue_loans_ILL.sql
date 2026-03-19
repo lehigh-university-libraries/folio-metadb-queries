@@ -1,4 +1,5 @@
 --metadb:function get_overdue_loans_with_patron
+DROP FUNCTION IF EXISTS get_overdue_loans_with_patron;
 CREATE FUNCTION get_overdue_loans_with_patron()
     
 RETURNS TABLE
