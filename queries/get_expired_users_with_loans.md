@@ -14,7 +14,7 @@ This report shows a list of expired users who still have outstanding loans.  We 
 | user_barcode | TEXT | Patron barcode | 800000000 |
 | user_email | TEXT | Patron email | amx000@lehigh.edu |
 | patron_group_name | TEXT | The name of the patron group(s) | faculty |
-| loan_due_date |DATE| Date the loan was due| 2025-06-28T00:00:00 |
+| loan_due_date |TEXT| Date the loan was due| 2025-06-28 |
 | item_barcode| TEXT| The barcode assigned to the item | 39151010192645 |
 | call_number|TEXT|Effective call number of the item|818.5 Z77p |
 | title | TEXT | Book title | The pigman; a novel.|
