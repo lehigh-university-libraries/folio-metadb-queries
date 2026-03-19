@@ -18,17 +18,17 @@ status_name TEXT
 AS
 $$
 SELECT DISTINCT
-    to_char(ug2.expiration_date, 'YYYY-MM-DD') as expire_date,
+    to_char(ug2.expiration_date::TIMESTAMP, 'YYYY-MM-DD') as expire_date,
     ug2.user_last_name AS last_name,
     ug2.barcode AS user_barcode, 
     ug2.user_email AS user_email,
     li.patron_group_name,
-    to_char(li.loan_due_date, 'YYYY-MM-DD') as loan_due_date, 
-    ie.barcode :: TEXT as item_barcode, 
+    to_char(li.loan_due_date::TIMESTAMP, 'YYYY-MM-DD') as loan_due_date, 
+    ie.barcode::TEXT as item_barcode, 
     ie.effective_call_number, 
     ihi.title,
     li.loan_policy_name,
-    to_char(ie.status_date, 'YYYY-MM-DD') as status_date,
+    to_char(ie.status_date::TIMESTAMP, 'YYYY-MM-DD') as status_date,
     ie.status_name   
 FROM folio_derived.loans_items li
 JOIN folio_derived.item_ext ie 
