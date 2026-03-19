@@ -18,7 +18,8 @@ RETURNS TABLE
 ) 
 AS
 $$
-select cast (fug.updated_date as DATE) as graduating_note_date,
+Select Distinct 
+cast (fug.updated_date as DATE) as graduating_note_date,
 fug.barcode as patron_barcode,
 fug.user_last_name as patron_last_name,
 fug.user_email AS patron_email,
