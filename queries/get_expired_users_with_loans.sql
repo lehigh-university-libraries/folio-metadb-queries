@@ -1,37 +1,35 @@
 --metadb:function get_expired_users_with_loans
-
 DROP FUNCTION IF EXISTS get_expired_users_with_loans;
-
 CREATE FUNCTION get_expired_users_with_loans(
 )
 RETURNS TABLE (
-expire_date DATE,
+expire_date TEXT,
 last_name TEXT,
 user_barcode TEXT,
 user_email TEXT,
 patron_group_name TEXT,
-loan_due_date DATE,
+loan_due_date TEXT,
 item_barcode TEXT,
 call_number TEXT,
 title TEXT,
 loan_policy_name TEXT,
-status_date DATE,
+status_date TEXT,
 status_name TEXT
 )
 AS
 $$
-SELECT 
-    cast(ug2.expiration_date as DATE) as expire_date,
+SELECT DISTINCT
+    to_char(ug2.expiration_date, 'YYYY-MM-DD') as expire_date,
     ug2.user_last_name AS last_name,
     ug2.barcode AS user_barcode, 
     ug2.user_email AS user_email,
     li.patron_group_name,
-    cast(li.loan_due_date as DATE) as loan_due_date, 
+    to_char(li.loan_due_date, 'YYYY-MM-DD') as loan_due_date, 
     ie.barcode :: TEXT as item_barcode, 
     ie.effective_call_number, 
     ihi.title,
     li.loan_policy_name,
-    cast(ie.status_date as DATE) as status_date,
+    to_char(ie.status_date, 'YYYY-MM-DD') as status_date,
     ie.status_name   
 FROM folio_derived.loans_items li
 JOIN folio_derived.item_ext ie 
