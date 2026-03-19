@@ -9,7 +9,7 @@ This report shows a list of expired users who still have outstanding loans.  We 
 
 | Attribute | Type | Description | Sample output |
 | --- | --- | --- | --- |
-| expire_date| DATE| Date the patron is expired | 2025-06-28T00:00:00 |
+| expire_date| TEXT| Date the patron is expired | 2025-06-28 |
 | last_name | TEXT| Patron last name | Tester|
 | user_barcode | TEXT | Patron barcode | 800000000 |
 | user_email | TEXT | Patron email | amx000@lehigh.edu |
@@ -19,5 +19,5 @@ This report shows a list of expired users who still have outstanding loans.  We 
 | call_number|TEXT|Effective call number of the item|818.5 Z77p |
 | title | TEXT | Book title | The pigman; a novel.|
 | loan_policy_name |TEXT| Loan policy name|365 Day Loan|
-| status_date | DATE | Date the item status changed | 2025-03-28T00:00:00|
+| status_date | TEXT | Date the item status changed | 2025-03-28|
 | status_name | TEXT | The status of the item | Checked out |
