@@ -1,10 +1,9 @@
 --metadb:function get_graduating_patrons_with_loans
 -- This function retrieves all loans associated with a graduating patron.
 CREATE FUNCTION get_graduating_patrons_with_loans()
-
 RETURNS TABLE
 (
-    graduating_note_date DATE,
+    graduating_note_date TEXT,
     patron_barcode TEXT,
     patron_last_name TEXT,
     patron_email TEXT,
@@ -13,13 +12,13 @@ RETURNS TABLE
     item_call_number TEXT,
     item_title TEXT,
     loan_status TEXT,
-    loan_due_date DATE,
+    loan_due_date TEXT,
     loan_policy_name TEXT
 ) 
 AS
 $$
 Select Distinct 
-cast (fug.updated_date as DATE) as graduating_note_date,
+to_char(fug.updated_date, 'YYYY-MM-DD') as graduating_note_date,
 fug.barcode as patron_barcode,
 fug.user_last_name as patron_last_name,
 fug.user_email AS patron_email,
@@ -28,7 +27,7 @@ ie.barcode as item_barcode,
 ie.effective_call_number as item_call_number,
 ihi.title as item_title,
 ie.status_name as loan_status,
-cast(li.loan_due_date as DATE) as loan_due_date,
+to_char(li.loan_due_date, 'YYYY-MM-DD') as loan_due_date,
 li.loan_policy_name
 FROM folio_derived.loans_items li
 JOIN folio_derived.item_ext ie
