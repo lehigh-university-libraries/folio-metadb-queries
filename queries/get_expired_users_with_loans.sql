@@ -17,7 +17,7 @@ status_name TEXT
 )
 AS
 $$
-SELECT DISTINCT
+SELECT
     to_char(ug2.expiration_date::TIMESTAMP, 'YYYY-MM-DD') as expire_date,
     ug2.user_last_name AS last_name,
     ug2.barcode AS user_barcode, 
@@ -33,11 +33,8 @@ SELECT DISTINCT
 FROM folio_derived.loans_items li
 JOIN folio_derived.item_ext ie 
     on li.item_id = ie.item_id
-JOIN (
-    SELECT DISTINCT ON (item_id) item_id, title
-    FROM folio_derived.items_holdings_instances
-    ORDER BY item_id
-) ihi ON li.item_id = ihi.item_id
+JOIN folio_derived.items_holdings_instances ihi 
+    on li.item_id = ihi.item_id
 JOIN (
     SELECT DISTINCT ON (user_id)
         user_id, user_last_name, barcode,
