@@ -1,7 +1,6 @@
 --metadb:function get_expired_users_with_loans
 DROP FUNCTION IF EXISTS get_expired_users_with_loans;
-CREATE FUNCTION get_expired_users_with_loans(
-)
+CREATE FUNCTION get_expired_users_with_loans()
 RETURNS TABLE (
 expire_date TEXT,
 last_name TEXT,
