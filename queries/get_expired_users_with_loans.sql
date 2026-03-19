@@ -30,7 +30,14 @@ SELECT DISTINCT
     li.loan_policy_name,
     to_char(ie.status_date::TIMESTAMP, 'YYYY-MM-DD') as status_date,
     ie.status_name   
-FROM folio_derived.loans_items li
+FROM (
+    SELECT DISTINCT ON (item_id)
+        item_id, user_id, loan_due_date, loan_status, 
+        patron_group_name, loan_policy_name
+    FROM folio_derived.loans_items
+    WHERE loan_status = 'Open'
+    ORDER BY item_id, loan_due_date DESC
+) li
 JOIN folio_derived.item_ext ie 
     on li.item_id = ie.item_id
 JOIN (
@@ -40,8 +47,7 @@ JOIN (
 ) ihi ON li.item_id = ihi.item_id
 JOIN folio_derived.users_groups ug2 
     on li.user_id = ug2.user_id
-WHERE li.loan_status = 'Open' 
-    and ug2.expiration_date is not null 
+WHERE ug2.expiration_date is not null 
     and ie.discovery_suppress = 'False'
 ORDER BY expire_date desc;
 $$
