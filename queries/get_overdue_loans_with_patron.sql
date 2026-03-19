@@ -7,7 +7,7 @@ RETURNS TABLE
         item_barcode TEXT,
         item_effective_call_number TEXT,
         item_title TEXT,
-        item_tstatus TEXT,
+        item_status TEXT,
         location_effective TEXT, 
         patron_group_name TEXT, 
         patron_last_name TEXT,
@@ -20,14 +20,25 @@ SELECT to_char(li.loan_due_date::TIMESTAMP, 'YYYY-MM-DD') AS loan_due_date,
         ihi.barcode AS item_barcode,
         ie.effective_call_number AS item_effective_call_number,
         ihi.title AS item_title,
-        li.item_status AS item_tstatus,
+        li.item_status AS item_status,
         ie.effective_location_name AS location_effective,
         li.patron_group_name AS patron_group_name,
         ug.user_last_name AS patron_last_name,
         ug.barcode AS patron_barcode,
         ug.user_email AS patron_email
-FROM folio_derived.items_holdings_instances ihi
-        JOIN folio_derived.item_ext ie ON ie.item_id = ihi.item_id
+FROM (
+    SELECT DISTINCT ON (item_id)
+        item_id, barcode, title
+    FROM folio_derived.items_holdings_instances
+    ORDER BY item_id
+) ihi
+        JOIN (
+            SELECT DISTINCT ON (item_id)
+                item_id, effective_call_number, effective_location_name,
+                effective_location_id, discovery_suppress
+            FROM folio_derived.item_ext
+            ORDER BY item_id
+        ) ie ON ie.item_id = ihi.item_id
         JOIN (
             SELECT DISTINCT ON (item_id)
                 item_id, loan_due_date, item_status,
