@@ -28,7 +28,7 @@ AS $$
     FROM
         folio_derived.item_ext iext
     LEFT JOIN folio_derived.item_notes inot ON iext.item_id = inot.item_id
-    LEFT JOIN folio_derived.holdings_ext hrt ON iext.holdings_record_id = hrt.holdings_id
+    LEFT JOIN folio_derived.holdings_ext hrt ON iext.holdings_record_id = hrt.id
     LEFT JOIN folio_derived.instance_ext inst ON hrt.instance_id = inst.instance_id
     LEFT JOIN folio_derived.locations_libraries locl ON iext.effective_location_id = locl.location_id
     WHERE
