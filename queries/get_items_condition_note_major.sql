@@ -15,7 +15,7 @@ SELECT
     ihi.barcode AS item_barcode,
     ie.effective_call_number AS item_call_number,
     ihi.title AS item_title,
-    to_char(ie.updated_date::TIMESTAMP, 'YYYY-MM-DD') AS item_updated_date
+    to_char(ie.updated_date::TIMESTAMPTZ, 'YYYY-MM-DD') AS item_updated_date
 FROM (
     SELECT DISTINCT ON (item_id)
         item_id, note, note_type_name
