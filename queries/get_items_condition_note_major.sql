@@ -36,5 +36,6 @@ FROM (
         FROM folio_derived.item_ext
         ORDER BY item_id
     ) ie ON ie.item_id = in2.item_id
+ORDER BY ie.effective_call_number;
 $$
 LANGUAGE SQL STABLE;
