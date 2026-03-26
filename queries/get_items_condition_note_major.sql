@@ -1,7 +1,7 @@
---metadb:function get_items_with_spine_label_note
--- This function retrieves all items with an Inventory Note about the Spine Label needing to be replaced.
-DROP FUNCTION IF EXISTS get_items_with_spine_label_note;
-CREATE FUNCTION get_items_with_spine_label_note()
+--metadb:function get_items_condition_note_major
+-- This function retrieves all items with an Inventory Note about Major condition fix needed.
+DROP FUNCTION IF EXISTS get_items_condition_note_major;
+CREATE FUNCTION get_items_condition_note_major()
 RETURNS TABLE
 (
     item_barcode TEXT,
