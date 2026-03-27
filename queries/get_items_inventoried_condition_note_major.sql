@@ -1,46 +1,52 @@
 --metadb:function get_items_with_condition_note_major
 -- This function retrieves all items with an Inventory Condition Note that is Major, filtered by location.
-DROP FUNCTION IF EXISTS get_items_with_condition_note_major;
-CREATE FUNCTION get_items_with_condition_note_major(location_filter TEXT DEFAULT 'All Locations')
+--metadb:function get_items_inventoried_missing_with_check_note_fm
+
+DROP FUNCTION IF EXISTS get_items_inventoried_missing_with_check_note_fm;
+CREATE FUNCTION get_items_inventoried_missing_with_check_note_fm()
 RETURNS TABLE
 (
-    library_name TEXT,
     item_barcode TEXT,
     item_call_number TEXT,
     item_title TEXT,
-    item_updated_date TEXT
+    missing_searched_note TEXT  
 ) 
 AS
 $$
 SELECT
-    ll.library_name,
     ihi.barcode AS item_barcode,
     ie.effective_call_number AS item_call_number,
     ihi.title AS item_title,
-    LEFT(ie.updated_date, 10) AS item_updated_date
+    in2.note AS missing_searched_note  
 FROM (
     SELECT DISTINCT ON (item_id)
-        item_id, note, note_type_name
-    FROM folio_derived.item_notes
-    WHERE note_type_name = 'Inventoried Condition'
-    AND note LIKE 'Major%'
+        item_id
+    FROM folio_derived.item_statistical_codes
+    WHERE statistical_code_name = 'Shelf Reading 2025'
     ORDER BY item_id
-) in2
+) isc
     JOIN (
         SELECT DISTINCT ON (item_id)
             item_id, barcode, title
         FROM folio_derived.items_holdings_instances
         ORDER BY item_id
-    ) ihi ON ihi.item_id = in2.item_id
+    ) ihi ON ihi.item_id = isc.item_id
     JOIN (
         SELECT DISTINCT ON (item_id)
-            item_id, effective_call_number, updated_date, effective_location_id
+            item_id, effective_call_number, status_name, effective_location_name
         FROM folio_derived.item_ext
         ORDER BY item_id
-    ) ie ON ie.item_id = in2.item_id
-    JOIN folio_derived.locations_libraries ll ON ll.location_id = ie.effective_location_id
+    ) ie ON ie.item_id = isc.item_id
+    LEFT JOIN (
+        SELECT DISTINCT ON (item_id)
+            item_id, note, note_type_name
+        FROM folio_derived.item_notes
+        WHERE note_type_name = 'Workflow-Missing Searched'
+        ORDER BY item_id
+    ) in2 ON in2.item_id = isc.item_id
 WHERE
-    (location_filter = 'All Locations' OR ll.library_name = location_filter)
-ORDER BY ll.library_name, ie.effective_call_number;
+    ie.status_name = 'Missing'
+    AND ie.effective_location_name LIKE 'Fairchild%'
+ORDER BY ie.effective_call_number;
 $$
 LANGUAGE SQL STABLE;
