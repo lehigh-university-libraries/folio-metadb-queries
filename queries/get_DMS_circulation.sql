@@ -37,11 +37,11 @@ AS $$
     WHERE 
         (start_date IS NULL OR LEFT(lt.loan_date::TEXT, 10)::DATE >= start_date)
         AND (end_date IS NULL OR LEFT(lt.loan_date::TEXT, 10)::DATE <= end_date)
-        AND lt.checkout_service_point_id = '99f509c0-1383-4f29-8fde-ff6970a4a8fe';
+        AND lt.checkout_service_point_id = '99f509c0-1383-4f29-8fde-ff6970a4a8fe'
+    ORDER BY LEFT(lt.loan_date::TEXT, 10) DESC;
 $$;
 
 DROP VIEW IF EXISTS get_DMS_circulation_ordered;
 CREATE VIEW get_DMS_circulation_ordered AS
 SELECT *
-FROM get_DMS_circulation(NULL, NULL)
-ORDER BY loan_date DESC;
+FROM get_DMS_circulation(NULL, NULL);
