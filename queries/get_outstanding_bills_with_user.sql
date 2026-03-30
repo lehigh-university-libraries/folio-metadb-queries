@@ -18,7 +18,7 @@ RETURNS TABLE
 AS
 $$
 SELECT
-    LEFT(faa.transaction_date, 10) AS action_date,
+    to_char(faa.transaction_date, 'YYYY-MM-DD') AS action_date,
     faa.type_action AS action_type,
     faa.transaction_amount AS bill_amount,
     faa.account_balance AS account_balance,
