@@ -1,0 +1,7 @@
+{
+    "displayName": "CIRCULATION - List titles with bib data and patron group",
+    "description": "This report lists titles circulated during the past 5 years with bib data and patron group information.",
+    "instructions": "No inputs needed.",
+    "parameters": [
+    ]
+}
