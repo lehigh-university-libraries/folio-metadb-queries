@@ -10,11 +10,11 @@ RETURNS TABLE
 ) 
 AS
 $$
-SELECT
+SELECT DISTINCT
     ihi.barcode AS item_barcode,
     ie.effective_call_number AS item_call_number,
     ihi.title AS item_title,
-    cast(ie.updated_date AS date) AS item_updated_date
+    cast(ie.updated_date::timestamp AS DATE) AS item_updated_date
 FROM
     folio_derived.items_holdings_instances ihi
     JOIN folio_derived.item_notes in2 ON in2.item_id = ihi.item_id
