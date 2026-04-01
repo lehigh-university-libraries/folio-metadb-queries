@@ -1,0 +1,7 @@
+{
+    "displayName": "INVENTORY - Count MISSING totals by Library",
+    "description": "This report lists MISSING totals by Library.",
+    "instructions": "No inputs needed.",
+    "parameters": [
+    ]
+}
