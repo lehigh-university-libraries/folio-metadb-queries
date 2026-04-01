@@ -46,7 +46,7 @@ FROM (
         SELECT DISTINCT ON (item_id)
             item_id, effective_location_id, status_name, discovery_suppress
         FROM folio_derived.item_ext
-        WHERE status_name = 'In transit'
+        WHERE status_name = 'Missing'
             AND discovery_suppress = 'False'
         ORDER BY item_id
     ) ie ON ie.item_id = ihi.item_id
