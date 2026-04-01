@@ -1,26 +1,41 @@
 --metadb:function get_items_with_spine_label_note
 -- This function retrieves all items with an Inventory Note about the Spine Label needing to be replaced.
+DROP FUNCTION IF EXISTS get_items_with_spine_label_note;
 CREATE FUNCTION get_items_with_spine_label_note()
 RETURNS TABLE
 (
     item_barcode TEXT,
     item_call_number TEXT,
     item_title TEXT,
-    item_updated_date DATE
+    item_updated_date TEXT
 ) 
 AS
 $$
-SELECT DISTINCT
+SELECT
     ihi.barcode AS item_barcode,
     ie.effective_call_number AS item_call_number,
     ihi.title AS item_title,
-    cast(ie.updated_date::timestamp AS DATE) AS item_updated_date
-FROM
-    folio_derived.items_holdings_instances ihi
-    JOIN folio_derived.item_notes in2 ON in2.item_id = ihi.item_id
-    JOIN folio_derived.item_ext ie ON ie.item_id = ihi.item_id
-WHERE
-    in2.note_type_name = 'Inventoried Condition'
-    AND in2.note LIKE 'Spine%';
+    LEFT(ie.updated_date, 10) AS item_updated_date
+FROM (
+    SELECT DISTINCT ON (item_id)
+        item_id, note, note_type_name
+    FROM folio_derived.item_notes
+    WHERE note_type_name = 'Inventoried Condition'
+    AND note LIKE 'Spine%'
+    ORDER BY item_id
+) in2
+    JOIN (
+        SELECT DISTINCT ON (item_id)
+            item_id, barcode, title
+        FROM folio_derived.items_holdings_instances
+        ORDER BY item_id
+    ) ihi ON ihi.item_id = in2.item_id
+    JOIN (
+        SELECT DISTINCT ON (item_id)
+            item_id, effective_call_number, updated_date
+        FROM folio_derived.item_ext
+        ORDER BY item_id
+    ) ie ON ie.item_id = in2.item_id
+ORDER BY ie.effective_call_number;
 $$
-LANGUAGE SQL;
+LANGUAGE SQL STABLE;
