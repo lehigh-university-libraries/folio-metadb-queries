@@ -4,10 +4,11 @@ DROP FUNCTION IF EXISTS get_items_with_condition_note_major;
 CREATE FUNCTION get_items_with_condition_note_major(location_filter TEXT DEFAULT 'All Locations')
 RETURNS TABLE
 (
+    library_name TEXT,
     item_barcode TEXT,
     item_call_number TEXT,
     item_title TEXT,
-    missing_searched_note TEXT  
+    item_updated_date TEXT
 ) 
 AS
 $$
