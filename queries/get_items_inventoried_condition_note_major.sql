@@ -1,9 +1,7 @@
 --metadb:function get_items_with_condition_note_major
 -- This function retrieves all items with an Inventory Condition Note that is Major, filtered by location.
---metadb:function get_items_inventoried_missing_with_check_note_fm
-
-DROP FUNCTION IF EXISTS get_items_inventoried_missing_with_check_note_fm;
-CREATE FUNCTION get_items_inventoried_missing_with_check_note_fm()
+DROP FUNCTION IF EXISTS get_items_with_condition_note_major;
+CREATE FUNCTION get_items_with_condition_note_major(location_filter TEXT DEFAULT 'All Locations')
 RETURNS TABLE
 (
     item_barcode TEXT,
