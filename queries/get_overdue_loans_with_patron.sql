@@ -35,7 +35,7 @@ FROM (
         JOIN (
             SELECT DISTINCT ON (item_id)
                 item_id, effective_call_number, effective_location_name,
-                effective_location_id, discovery_suppress
+                effective_location_id
             FROM folio_derived.item_ext
             ORDER BY item_id
         ) ie ON ie.item_id = ihi.item_id
@@ -56,7 +56,6 @@ FROM (
             ORDER BY user_id
         ) ug ON li.user_id = ug.user_id
 WHERE li.patron_group_name NOT IN ('ill', 'palciuser', 'libraryuse')
-        AND ie.discovery_suppress = 'False'
 ORDER BY loan_due_date, patron_last_name, patron_barcode, ie.effective_call_number;
 $$
 LANGUAGE SQL STABLE;
