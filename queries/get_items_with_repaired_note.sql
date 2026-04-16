@@ -1,5 +1,7 @@
-DROP FUNCTION IF EXISTS get_items_with_repaired_note();
+--metadb:function get_items_with_repaired_note
+DROP FUNCTION IF EXISTS get_items_with_repaired_note;
 CREATE FUNCTION get_items_with_repaired_note()
+
 RETURNS TABLE
 (
 library_name TEXT,
