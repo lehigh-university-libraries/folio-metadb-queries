@@ -48,6 +48,7 @@ where fug.active ='true'
 and fnl.object_type = 'user'
 and t.name = 'graduating'
 and li.loan_status = 'Open'
+and ie.material_type_name <> 'dms_laptop'
 and fnn.content = 'true'
 order by patron_last_name;
 $$
