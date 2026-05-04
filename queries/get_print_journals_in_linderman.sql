@@ -107,7 +107,7 @@ JOIN folio_inventory.instance__t it2
 LEFT JOIN folio_derived.item_ext ie2
     ON ie2.item_id = it.id
 LEFT JOIN folio_derived.holdings_ext he
-    ON he.holdings_id = hrt.id
+    ON he.id = hrt.id
 LEFT JOIN folio_inventory.holdings_type__t htt
     ON htt.id = hrt.holdings_type_id
 LEFT JOIN folio_derived.holdings_statements hs
