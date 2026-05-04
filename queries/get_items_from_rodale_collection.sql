@@ -29,7 +29,7 @@ SELECT
   ie2.updated_date::DATE AS item_updated,
   ie2.accession_number AS item_accession_number,
   ie2.permanent_location_name AS item_permanent_location,
-  he.holdings_id AS holdings_id,
+  he.id AS holdings_id,
   he.holdings_hrid AS holdings_hrid,
   he.call_number AS holdings_call_numb,
   he.call_number_type_name AS holdings_call_numb_type,
@@ -42,7 +42,7 @@ FROM
   folio_inventory.item__t it 
   LEFT JOIN folio_derived.item_ext ie2 ON ie2.item_id = it.id 
   JOIN folio_inventory.holdings_record__t hrt ON hrt.id = it.holdings_record_id 
-  LEFT JOIN folio_derived.holdings_ext he ON he.holdings_id = hrt.id 
+  LEFT JOIN folio_derived.holdings_ext he ON he.id = hrt.id 
   LEFT JOIN folio_inventory.holdings_type__t htt ON htt.id = hrt.holdings_type_id 
   JOIN folio_inventory.instance__t it2 ON it2.id = hrt.instance_id 
   LEFT JOIN folio_derived.instance_ext ie ON ie.instance_id = it2.id
@@ -60,7 +60,7 @@ GROUP BY
   ie2.updated_date,
   ie2.accession_number,
   ie2.permanent_location_name,
-  he.holdings_id,
+  he.id,
   he.holdings_hrid,
   he.call_number,
   he.call_number_type_name,
