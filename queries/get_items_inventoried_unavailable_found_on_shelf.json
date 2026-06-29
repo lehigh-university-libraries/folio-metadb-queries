@@ -1,6 +1,6 @@
 {
     "displayName": "INVENTORY - Unavailable items found on shelf",
-    "description": "This report returns items inventoried with message 'unavailable item found on shelf'",
+    "description": "This report returns items inventoried with message 'unavailable item found on shelf'. Item Status reflects current availability status.",
     "instructions": "No inputs needed.",
     "parameters": [
     ]
