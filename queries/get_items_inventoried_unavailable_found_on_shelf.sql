@@ -55,7 +55,7 @@ AS $$
     LEFT JOIN folio_derived.locations_libraries locl ON iext.effective_location_id = locl.location_id
     WHERE
         inot.note LIKE 'Shelf status: Unavailable item is on shelf%'
-        AND iext.status_name != 'Available'
+        AND iext.status_name != 'Withdrawn'
     ORDER BY
         item_location,
         call_number;
