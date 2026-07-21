@@ -1,5 +1,5 @@
 {
-    "displayName": "INVENTORY - Item Condition Counts",
+    "displayName": "INVENTORY - Count Item Condition",
     "description": "This report lists Item Condition Counts for Inventory2025.",
     "instructions": "No inputs needed.",
     "parameters": [
