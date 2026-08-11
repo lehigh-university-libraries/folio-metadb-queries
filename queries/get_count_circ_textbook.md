@@ -13,12 +13,12 @@ The report shows the counts of circs of textbooks by the patron group.
 
 | Attribute | Type | Description | Sample output |
 | --- | --- | --- | --- |
-| barcode | TEXT | The barcode of the textbook |  |
-| title | TEXT | The title of the textbook|  |
-| call_number | TEXT | The call number of the textbook |  |
-| undergrad_circs |  |  |  |
-| graduate_circs |  |  |  |
-| staff_circs |  |  |  |
-| ill_circs |  |  |  |
-| faculty_circs |  |  |  |
-| loan_count |  |  |  |
+| barcode | TEXT | The barcode of the textbook | 39151001598784 |
+| title | TEXT | The title of the textbook| How to take smart notes |
+| call_number | TEXT | The call number of the textbook | F1RST EDUC MON 1995 |
+| undergrad_circs | INTEGER | Number of times book was circulated during specified time period | 3 |
+| graduate_circs | INTEGER | Number of times book was circulated during specified time period | 1 |
+| staff_circs | INTEGER | Number of times book was circulated during specified time period | 0 |
+| ill_circs | INTEGER | Number of times book was circulated during specified time period | 5 |
+| faculty_circs | INTEGER | Number of times book was circulated during specified time period | 0 |
+| loan_count | INTEGER | Number of times book was circulated during specified time period | 0 |
