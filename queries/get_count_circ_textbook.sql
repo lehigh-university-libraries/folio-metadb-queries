@@ -39,17 +39,15 @@ WITH loan_counts AS (
         lt.item_id
 )
 SELECT
-    ie.barcode,
-    ihi.title,
-    ie.effective_call_number,
-    ie.material_type_name,
-    ie.effective_location_name,
-    COALESCE(lc.undergrad_circs, 0) AS undergrad_circs,
-    COALESCE(lc.graduate_circs, 0) AS graduate_circs,
-    COALESCE(lc.staff_circs, 0) AS staff_circs,
-    COALESCE(lc.ill_circs, 0) AS ill_circs,
-    COALESCE(lc.faculty_circs, 0) AS faculty_circs,
-    COALESCE(lc.loan_count, 0) AS total_circs
+    ie.barcode :: TEXT AS barcode,
+    ihi.title :: TEXT AS title,
+    ie.effective_call_number :: TEXT AS call_number,
+    COALESCE(lc.undergrad_circs, 0) :: INTEGER AS undergrad_circs,
+    COALESCE(lc.graduate_circs, 0) :: INTEGER AS graduate_circs,
+    COALESCE(lc.staff_circs, 0) :: INTEGER AS staff_circs,
+    COALESCE(lc.ill_circs, 0) :: INTEGER AS ill_circs,
+    COALESCE(lc.faculty_circs, 0) :: INTEGER AS faculty_circs,
+    COALESCE(lc.loan_count, 0) :: INTEGER AS total_circs
 FROM
     folio_derived.item_ext AS ie
     LEFT JOIN folio_derived.items_holdings_instances AS ihi 
@@ -62,4 +60,3 @@ ORDER BY
     ie.effective_call_number;
 $$
 LANGUAGE SQL;
-    
