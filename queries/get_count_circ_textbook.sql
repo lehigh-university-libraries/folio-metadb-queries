@@ -1,6 +1,7 @@
 --metadb:function get_count_circ_textbook
 
-DROP FUNCTION IF EXISTS get_count_circ_textbook;
+DROP FUNCTION IF EXISTS get_count_circ_textbook(DATE, DATE);
+DROP FUNCTION IF EXISTS get_count_circ_textbook();
 
 CREATE FUNCTION get_count_circ_textbook(
     start_date DATE DEFAULT NULL,
