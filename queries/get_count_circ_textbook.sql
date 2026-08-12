@@ -1,3 +1,5 @@
+--metadb:function get_count_circ_textbook
+
 DROP FUNCTION IF EXISTS get_count_circ_textbook;
 
 CREATE FUNCTION get_count_circ_textbook(
@@ -58,4 +60,6 @@ WHERE
     ie.effective_location_name = 'Fairchild - 5th Floor - North - F1RST Textbook Collection'
 ORDER BY
     ie.effective_call_number;
+$$
+LANGUAGE SQL;
     
