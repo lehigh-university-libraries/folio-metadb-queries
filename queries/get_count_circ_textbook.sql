@@ -8,8 +8,8 @@ CREATE FUNCTION get_count_circ_textbook(
 ) 
 RETURNS TABLE (
     barcode TEXT,
-    title TEXT,
     call_number TEXT,
+    title TEXT,
     undergrad_circs INTEGER,
     graduate_circs INTEGER,
     staff_circs INTEGER,
@@ -40,8 +40,8 @@ WITH loan_counts AS (
 )
 SELECT
     ie.barcode :: TEXT AS barcode,
-    ihi.title :: TEXT AS title,
     ie.effective_call_number :: TEXT AS call_number,
+    ihi.title :: TEXT AS title,
     COALESCE(lc.undergrad_circs, 0) :: INTEGER AS undergrad_circs,
     COALESCE(lc.graduate_circs, 0) :: INTEGER AS graduate_circs,
     COALESCE(lc.staff_circs, 0) :: INTEGER AS staff_circs,
