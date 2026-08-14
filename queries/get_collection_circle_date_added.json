@@ -1,0 +1,7 @@
+{
+    "displayName": "Collection - Circle Title List - by date added",
+    "description": "This report lists items in the Circle Collection by the date they were added",
+    "instructions": "Enter start and ending dates",
+    "parameters": [
+    ]
+}
