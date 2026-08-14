@@ -13,8 +13,8 @@ The report gives a list of items that were added to the CIRCLE collection during
 
 | Attribute | Type | Description | Sample output |
 | --- | --- | --- | --- |
-| date_added | TIMESTAMPTZ | The date the holdings record for the CIRCLE item was created |  |
-| item_barcode | TEXT | The barcode on the item. |  |
-| title | TEXT | Title | The price of the ticket : collected nonfiction: 1948-1985 / James Baldwin. |
-| author | TEXT | The author of the publication | 1 |
+| date_added | TIMESTAMPTZ | The date the holdings record for the CIRCLE item was created | 2025-07-14T16:47:37.998Z |
+| item_barcode | TEXT | The barcode on the item. | 39151010409619 |
+| author | TEXT | The author of the publication | Moreno-Garcia, Silvia |
+| title | TEXT | Title | Alligator tears : a memoir in essays |
 | item_status | TEXT | The status of the item | Available |
