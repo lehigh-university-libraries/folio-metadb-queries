@@ -9,9 +9,8 @@ CREATE FUNCTION get_collection_circle_date_added(
 RETURNS TABLE (
     date_added TIMESTAMPTZ,
     item_barcode TEXT,
-    title TEXT,
     author TEXT,
-    call_number TEXT,
+    title TEXT,
     item_status TEXT
 ) 
 AS 
@@ -19,9 +18,8 @@ $$
 SELECT
     he.created_date AS date_added,
     ie2.barcode AS item_barcode,
-    ie.title AS title,
     string_agg(ic.contributor_name, '; ') AS author,
-    he.call_number AS call_number,
+    ie.title AS title,
     ie2.status_name AS item_status
 
 FROM
@@ -38,7 +36,6 @@ WHERE
     AND (it.discovery_suppress::BOOLEAN <> TRUE OR it.discovery_suppress IS NULL)
     AND (hrt.discovery_suppress::BOOLEAN <> TRUE OR hrt.discovery_suppress IS NULL)
     AND (it2.discovery_suppress::BOOLEAN <> TRUE OR it2.discovery_suppress IS NULL)
-    -- Parameterized Holdings Created Date Range:
     AND (start_date IS NULL OR he.created_date >= start_date::TIMESTAMPTZ)
     AND (end_date IS NULL OR he.created_date < (end_date + INTERVAL '1 day')::TIMESTAMPTZ)
 
@@ -46,7 +43,6 @@ GROUP BY
     he.created_date,
     ie2.barcode,
     ie.title,
-    he.call_number,
     ie2.status_name;
 $$
 LANGUAGE SQL STABLE;;
