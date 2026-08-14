@@ -1,5 +1,6 @@
 --metadb:function get_collection_circle_date_added
-DROP FUNCTION IF EXISTS get_collection_circle_date_added;
+DROP FUNCTION IF EXISTS get_collection_circle_date_added(DATE, DATE);
+DROP FUNCTION IF EXISTS get_collection_circle_date_added();
 
 CREATE FUNCTION get_collection_circle_date_added(
     start_date DATE DEFAULT NULL,
@@ -10,9 +11,9 @@ RETURNS TABLE (
     item_barcode TEXT,
     title TEXT,
     author TEXT,
+    call_number TEXT,
     item_status TEXT
 ) 
-LANGUAGE sql
 AS 
 $$
 SELECT
@@ -45,5 +46,7 @@ GROUP BY
     he.created_date,
     ie2.barcode,
     ie.title,
+    he.call_number,
     ie2.status_name;
-$$;
+$$
+LANGUAGE SQL STABLE;;
