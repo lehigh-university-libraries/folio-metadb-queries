@@ -10,7 +10,6 @@ RETURNS TABLE (
     item_barcode TEXT,
     title TEXT,
     author TEXT,
-    call_number TEXT,
     item_status TEXT
 ) 
 LANGUAGE sql
@@ -46,6 +45,5 @@ GROUP BY
     he.created_date,
     ie2.barcode,
     ie.title,
-    he.call_number,
     ie2.status_name;
 $$;
