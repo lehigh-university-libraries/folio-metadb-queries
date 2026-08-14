@@ -1,4 +1,5 @@
 --metadb:function get_collection_circle_date_added
+
 DROP FUNCTION IF EXISTS get_collection_circle_date_added(DATE, DATE);
 DROP FUNCTION IF EXISTS get_collection_circle_date_added();
 
@@ -7,7 +8,7 @@ CREATE FUNCTION get_collection_circle_date_added(
     end_date DATE DEFAULT NULL
 ) 
 RETURNS TABLE (
-    date_added TIMESTAMPTZ,
+    date_added TEXT,
     item_barcode TEXT,
     author TEXT,
     title TEXT,
@@ -16,11 +17,11 @@ RETURNS TABLE (
 AS 
 $$
 SELECT
-    he.created_date AS date_added,
-    ie2.barcode AS item_barcode,
-    string_agg(ic.contributor_name, '; ') AS author,
-    ie.title AS title,
-    ie2.status_name AS item_status
+    TO_CHAR(he.created_date, 'YYYY-MM-DD') :: TEXT AS date_added,
+    ie2.barcode :: TEXT AS item_barcode,
+    string_agg(ic.contributor_name, '; ') :: TEXT AS author,
+    ie.title :: TEXT AS title,
+    ie2.status_name :: TEXT AS item_status
 
 FROM
     folio_inventory.item__t it 
@@ -40,9 +41,9 @@ WHERE
     AND (end_date IS NULL OR he.created_date < (end_date + INTERVAL '1 day')::TIMESTAMPTZ)
 
 GROUP BY
-    he.created_date,
+    TO_CHAR(he.created_date, 'YYYY-MM-DD'),
     ie2.barcode,
     ie.title,
     ie2.status_name;
 $$
-LANGUAGE SQL STABLE;;
+LANGUAGE SQL STABLE;
