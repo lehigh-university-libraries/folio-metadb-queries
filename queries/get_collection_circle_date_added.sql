@@ -6,7 +6,7 @@ CREATE FUNCTION get_collection_circle_date_added(
     end_date DATE DEFAULT NULL
 ) 
 RETURNS TABLE (
-    circle_book_added TIMESTAMPTZ,
+    date_added TIMESTAMPTZ,
     item_barcode TEXT,
     title TEXT,
     author TEXT,
@@ -17,7 +17,7 @@ LANGUAGE sql
 AS 
 $$
 SELECT
-    he.created_date AS circle_book_added,
+    he.created_date AS date_added,
     ie2.barcode AS item_barcode,
     ie.title AS title,
     string_agg(ic.contributor_name, '; ') AS author,
