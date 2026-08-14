@@ -1,6 +1,6 @@
 {
     "displayName": "CIRCLE Collection - Titles Added by Date",
-    "description": "Create list of all CIRCLE books added within a gven time period.",
+    "description": "Create list of all CIRCLE books added within a given time period.",
     "instructions": "Input a start date of the period of time and/or an end date or leave the date fields empty",
     "parameters": [
         {
