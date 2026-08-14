@@ -1,7 +1,7 @@
---metadb:function get_circle_date_added
-DROP FUNCTION IF EXISTS get_circle_date_added;
+--metadb:function get_collection_circle_date_added
+DROP FUNCTION IF EXISTS get_collection_circle_date_added;
 
-CREATE FUNCTION get_circle_date_added(
+CREATE FUNCTION get_collection_circle_date_added(
     start_date DATE DEFAULT NULL,
     end_date DATE DEFAULT NULL
 ) 
