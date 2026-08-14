@@ -1,7 +1,19 @@
 {
-    "displayName": "Collection - Circle Title List - by date added",
-    "description": "This report lists items in the Circle Collection by the date they were added",
-    "instructions": "Enter start and ending dates",
+    "displayName": "List titles and their date added of CIRCLE collection",
+    "description": "Create list of all CIRCLE books added within a gven time period.",
+    "instructions": "Input a start date of the period of time and/or an end date or leave the date fields empty",
     "parameters": [
+        {
+            "name": "start_date",
+            "displayName": "Start Date",
+            "type": "date",
+            "required": false
+        },
+        {
+            "name": "end_date",
+            "displayName": "End Date",
+            "type": "date",
+            "required": false
+        }
     ]
 }
