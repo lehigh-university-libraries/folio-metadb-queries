@@ -132,6 +132,7 @@ GROUP BY
     ie2.material_type_name,
     ie2.status_name
 ORDER BY
-    it2.title
+    it2.title;
 $$
 LANGUAGE SQL STABLE;
+
