@@ -1,4 +1,4 @@
---metadb:function get_count_circ_textbook
+--metadb:function get_count_circ_boardgames
 
 DROP FUNCTION IF EXISTS get_count_circ_boardgames(DATE, DATE);
 DROP FUNCTION IF EXISTS get_count_circ_boardgames();
