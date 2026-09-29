@@ -1,5 +1,5 @@
 {
-    "displayName": "Baord Game Collection - List of Titles with Circulation Counts",
+    "displayName": "Board Game Collection - List of Titles with Circulation Counts",
     "description": "Create list of all Board Games and the number of times they have been loaned within a given period of time.",
     "instructions": "Input a start date of the period of time and/or an end date or leave the date fields empty",
     "parameters": [
