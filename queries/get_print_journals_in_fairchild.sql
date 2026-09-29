@@ -133,6 +133,5 @@ GROUP BY
     ie2.status_name
 ORDER BY
     it2.title
-;
 $$
 LANGUAGE SQL STABLE;
