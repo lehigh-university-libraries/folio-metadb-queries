@@ -1,7 +1,7 @@
-# List to show all print journal in Linderman
+# List to show all print journal in Fairchild
 
 ## Purpose
-The report is to show all print journals held in Linderman along with information about currency, retention, holdings statements, binding information and other contextual info to help maintain the collection.
+The report is to show all print journals held in Fairchild along with information about currency, retention, holdings statements, binding information and other contextual info to help maintain the collection.
 
 ## Output table
 
