@@ -1,5 +1,5 @@
-/* metadb:function get_print_journals_in_fairchild
-   This function retrieves print journals that are located in Fairchild. */
+--metadb:function get_print_journals_in_fairchild
+--This function retrieves print journals that are located in Fairchild.
 DROP FUNCTION IF EXISTS get_print_journals_in_fairchild;
 CREATE FUNCTION get_print_journals_in_fairchild()
 RETURNS TABLE
