@@ -13,9 +13,9 @@ The report shows the counts of circs of board by the patron group.
 
 | Attribute | Type | Description | Sample output |
 | --- | --- | --- | --- |
-| barcode | TEXT | The barcode of the textbook | 39151001598784 |
-| title | TEXT | The title of the textbook| How to take smart notes |
-| call_number | TEXT | The call number of the textbook | F1RST EDUC MON 1995 |
+| barcode | TEXT | The barcode of the boardgames | 39151001598784 |
+| title | TEXT | The title of the boardgames| Uno |
+| call_number | TEXT | The call number of the textbook | LIND Reserves Board Game |
 | undergrad_circs | INTEGER | Number of times book was circulated during specified time period | 3 |
 | graduate_circs | INTEGER | Number of times book was circulated during specified time period | 1 |
 | staff_circs | INTEGER | Number of times book was circulated during specified time period | 0 |
